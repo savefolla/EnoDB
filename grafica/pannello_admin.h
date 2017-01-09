@@ -1,0 +1,4 @@
+#ifndef PANNELLO_ADMIN_H
+#define PANNELLO_ADMIN_H
+
+#endif // PANNELLO_ADMIN_H
