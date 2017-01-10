@@ -30,7 +30,9 @@ SOURCES += main.cpp \
     logica/controller_utente.cpp \
     logica/controller_admin.cpp \
     grafica/mainwindow.cpp \
-    grafica/pannello_utente.cpp
+    grafica/pannello_utente.cpp \
+    grafica/pannello_admin.cpp \
+    grafica/pannello_admin_prod.cpp
 
 HEADERS  += \
     logica/prodotto.h \
@@ -40,4 +42,6 @@ HEADERS  += \
     logica/controller_admin.h \
     grafica/mainwindow.h \
     grafica/pannello_admin.h \
-    grafica/pannello_utente.h
+    grafica/pannello_utente.h \
+    grafica/pannello_admin_prod.h \
+    grafica/pannello_admin_user.h

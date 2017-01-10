@@ -18,7 +18,7 @@ private:
 public slots:
     void slotCerca();
 public:
-    pannelloUtente(ControllerUtente*,QWidget* =0);
+    pannelloUtente(ControllerUtente*);
 };
 
 #endif // PANNELLO_UTENTE_H

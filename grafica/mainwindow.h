@@ -5,7 +5,6 @@
 #include<QLineEdit>
 #include<QFormLayout>
 #include<QLabel>
-#include<QMessageBox>
 #include"logica/controller_utente.h"
 #include"logica/utente.h"
 #include"pannello_utente.h"

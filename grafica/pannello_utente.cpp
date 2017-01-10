@@ -1,6 +1,6 @@
 #include"pannello_utente.h"
 
-pannelloUtente::pannelloUtente(ControllerUtente* x,QWidget* parent):controller(x){
+pannelloUtente::pannelloUtente(ControllerUtente* x):controller(x){
     barraRicerca=new QLineEdit;
     buttonCerca=new QPushButton;
     tableOutput=new QTableWidget;
