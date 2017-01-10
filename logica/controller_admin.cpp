@@ -1,10 +1,10 @@
 #include"controller_admin.h"
 
 ControllerAdmin::ControllerAdmin(){
-    /*datap=new DatabaseProdotti;
+    datap=new DatabaseProdotti;
     datap->load();
     datau=new DatabaseUtenti;
-    datau->load();*/
+    datau->load();
 }
 
 void ControllerAdmin::insert(Utente* u){

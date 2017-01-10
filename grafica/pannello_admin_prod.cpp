@@ -1,6 +1,7 @@
 #include"pannello_admin_prod.h"
 
 pannelloAdminProd::pannelloAdminProd(){
+    controller=new ControllerAdmin();
     lineCerca=new QLineEdit;
     buttonCerca=new QPushButton;
     buttonElimina=new QPushButton;
@@ -49,9 +50,11 @@ pannelloAdminProd::pannelloAdminProd(){
 }
 
 void pannelloAdminProd::slotCerca(){
-    //inizializza controller
-    //tramite controller cerca il prodotto
-    //scrive nei vari line i dati del prodotto se trovato
+    Prodotto* prod=controller->datap->find(lineCerca->text().toStdString());
+    lineNome->setText(QString::fromStdString(prod->getNome()));
+    lineUso->setText(QString::fromStdString(prod->getUso()));
+    lineDurata->setText(QString::number(prod->getDurata()));
+    linePrezzo->setText(QString::number(prod->getPrezzo()));
 }
 
 void pannelloAdminProd::slotSalva(){

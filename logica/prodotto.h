@@ -16,7 +16,7 @@ public:
     string getNome() const;
     string getUso() const;
     int getDurata() const;
-    int getPrezzo() const;
+    double getPrezzo() const;
 };
 
 #endif // PRODOTTO_H

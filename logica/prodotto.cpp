@@ -14,6 +14,6 @@ int Prodotto::getDurata() const{
     return durata;
 }
 
-int Prodotto::getPrezzo() const{
+double Prodotto::getPrezzo() const{
     return prezzo;
 }

@@ -6,6 +6,7 @@
 #include<QFormLayout>
 #include<QLabel>
 #include"pannello_admin.h"
+#include"logica/controller_admin.h"
 
 class pannelloAdminProd: public QWidget{
     Q_OBJECT
@@ -24,6 +25,7 @@ private:
     QPushButton* buttonSalva;
     QPushButton* buttonIndietro;
     QLabel* labelSaved;
+    ControllerAdmin* controller;
 public slots:
     void slotCerca();
     void slotSalva();

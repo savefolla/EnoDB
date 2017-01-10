@@ -3,7 +3,7 @@
 void DatabaseProdotti::load(){
     //popolazione database
     dbp.push_back(new Prodotto("meta","enologia",22,35.2));
-    dbp.push_back(new Prodotto("acido","enologia",10,27.6));
+    dbp.push_back(new Prodotto("acido","enologia",10,27.62));
     dbp.push_back(new Prodotto("tappi","enologia",7,29.6));
     dbp.push_back(new Prodotto("gesu","religione",6,45.6));
 }
