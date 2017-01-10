@@ -8,8 +8,8 @@ public:
     DatabaseProdotti* datap;
 
     ControllerAdmin();
-    void insert(Utente*);
-    void insert(Prodotto*);
+    void insertU(Utente*);
+    void insertP(Prodotto*);
     void removeU(const string&);
     void removeP(const string&);
     void cambiaTipo(const string&, string);

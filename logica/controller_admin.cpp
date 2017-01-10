@@ -7,11 +7,11 @@ ControllerAdmin::ControllerAdmin(){
     datau->load();
 }
 
-void ControllerAdmin::insert(Utente* u){
+void ControllerAdmin::insertU(Utente* u){
     datau->insert(u);
 }
 
-void ControllerAdmin::insert(Prodotto* p){
+void ControllerAdmin::insertP(Prodotto* p){
     datap->insert(p);
 }
 
