@@ -5,7 +5,6 @@ pannelloUtente::pannelloUtente(ControllerUtente* x):controller(x){
     buttonCerca=new QPushButton;
     tableOutput=new QTableWidget;
     QGridLayout* layout=new QGridLayout;
-
     buttonCerca->setText("Cerca");
 
     layout->addWidget(barraRicerca,0,0);

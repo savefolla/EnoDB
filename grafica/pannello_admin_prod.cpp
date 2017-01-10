@@ -50,11 +50,17 @@ pannelloAdminProd::pannelloAdminProd(){
 }
 
 void pannelloAdminProd::slotCerca(){
+    lineNome->setText("");
+    lineUso->setText("");
+    lineDurata->setText("");
+    linePrezzo->setText("");
     Prodotto* prod=controller->datap->find(lineCerca->text().toStdString());
-    lineNome->setText(QString::fromStdString(prod->getNome()));
-    lineUso->setText(QString::fromStdString(prod->getUso()));
-    lineDurata->setText(QString::number(prod->getDurata()));
-    linePrezzo->setText(QString::number(prod->getPrezzo()));
+    if(prod){
+        lineNome->setText(QString::fromStdString(prod->getNome()));
+        lineUso->setText(QString::fromStdString(prod->getUso()));
+        lineDurata->setText(QString::number(prod->getDurata()));
+        linePrezzo->setText(QString::number(prod->getPrezzo()));
+    }
 }
 
 void pannelloAdminProd::slotSalva(){
@@ -64,8 +70,7 @@ void pannelloAdminProd::slotSalva(){
 }
 
 void pannelloAdminProd::slotElimina(){
-    //inizializza il controller
-    //tramite controller lo rimuove dal db
+    controller->removeP(lineNome->text().toStdString());
 }
 
 void pannelloAdminProd::slotIndietro(){
