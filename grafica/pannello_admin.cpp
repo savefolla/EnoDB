@@ -26,4 +26,6 @@ void pannelloAdmin::slotProd(){
 
 void pannelloAdmin::slotUser(){
     this->hide();
+    pannelloAdminUser* p=new pannelloAdminUser;
+    p->show();
 }
