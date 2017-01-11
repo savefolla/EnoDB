@@ -2,7 +2,7 @@
 #include"database.h"
 #include"prodotto.h"
 
-LoginPw::LoginPw(string l, string pw): login(l), password(pw){}
+LoginPw::LoginPw(const string& l, const string& pw): login(l), password(pw){}
 
 string LoginPw::getLogin() const{
     return login;

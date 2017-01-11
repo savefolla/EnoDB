@@ -33,9 +33,9 @@ Prodotto* DatabaseProdotti::find(const string& s) const{
 
 void DatabaseUtenti::load(){
     //popolazione database
-    dbu.push_back(new UtenteCasuale(*new LoginPw("saveCas","p"),*new Info("","","","","")));
-    dbu.push_back(new UtenteUtilizzatore(*new LoginPw("saveUti","p"),*new Info("","","","","")));
-    dbu.push_back(new UtenteRivenditore(*new LoginPw("saveRiv","p"),*new Info("","","","","")));
+    dbu.push_back(new UtenteCasuale(*new LoginPw("saveCas","p"),*new Info("d","d","d","d","d")));
+    dbu.push_back(new UtenteUtilizzatore(*new LoginPw("saveUti","p"),*new Info("s","s","s","s","s")));
+    dbu.push_back(new UtenteRivenditore(*new LoginPw("saveProva","p"),*new Info("r","r","r","r","r")));
 }
 
 void DatabaseUtenti::save() const{
@@ -46,12 +46,9 @@ void DatabaseUtenti::insert(Utente* u){
     dbu.push_back(u);
 }
 
-void DatabaseUtenti::remove(const string& s){
-    for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end();++cit)
-        if(s==(*cit)->getNome()){
-            delete *cit;
-            cit=dbu.erase(cit);
-        }
+void DatabaseUtenti::remove(Utente* u){
+    if(u)
+        delete u;
 }
 
 Utente* DatabaseUtenti::find(const string& s) const{

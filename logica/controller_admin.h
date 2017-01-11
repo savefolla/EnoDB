@@ -10,7 +10,7 @@ public:
     ControllerAdmin();
     void insertU(Utente*);
     void insertP(Prodotto*);
-    void removeU(const string&);
+    void removeU(Utente*);
     void removeP(const string&);
     void cambiaTipo(const string&, string);
     void save(); //da fare

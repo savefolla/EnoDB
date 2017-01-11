@@ -13,7 +13,7 @@ private:
     string login;
     string password;
 public:
-    LoginPw(string l, string pw);
+    LoginPw(const string& l, const string& pw);
     string getLogin() const;
     string getPassword() const;
     bool operator==(const LoginPw&) const;

@@ -88,11 +88,30 @@ void pannelloAdminUser::slotCerca(){
 }
 
 void pannelloAdminUser::slotSalva(){
-
+    if(controller->datau->find(lineLogin->text().toStdString())){
+        labelSaved->setText("Utente già presente");
+    }else{
+        Info* i=new Info(lineNome->text().toStdString(),
+                         lineCognome->text().toStdString(),
+                         lineMail->text().toStdString(),
+                         lineTelefono->text().toStdString(),
+                         lineCF->text().toStdString());
+        //inserire scelta tipologia utente (menu a tendina?)
+        //creare nuovo utente tipologia scelta e caricarlo nel db
+        labelSaved->setText("Salvato!");
+    }
 }
 
 void pannelloAdminUser::slotElimina(){
-
+    lineLogin->setText("");
+    linePassword->setText("");
+    lineNome->setText("");
+    lineCognome->setText("");
+    lineMail->setText("");
+    lineTelefono->setText("");
+    lineCF->setText("");
+    controller->removeU(controller->datau->find(lineLogin->text().toStdString()));
+    labelSaved->setText("Eliminato!");
 }
 
 void pannelloAdminUser::slotIndietro(){
