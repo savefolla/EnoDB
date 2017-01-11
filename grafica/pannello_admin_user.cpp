@@ -96,7 +96,7 @@ void pannelloAdminUser::slotSalva(){
                          lineMail->text().toStdString(),
                          lineTelefono->text().toStdString(),
                          lineCF->text().toStdString());
-        //inserire scelta tipologia utente (menu a tendina?)
+        //inserire scelta tipologia utente (menu a tendina?)(ricordarsi di aggiungere il menu a tendi anche negli altri slots)
         //creare nuovo utente tipologia scelta e caricarlo nel db
         labelSaved->setText("Salvato!");
     }
