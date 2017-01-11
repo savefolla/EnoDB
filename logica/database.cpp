@@ -47,11 +47,14 @@ void DatabaseUtenti::insert(Utente* u){
 }
 
 void DatabaseUtenti::remove(Utente* u){
-    if(u)
-        delete u;
+    for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end();++cit)
+        if(u->getLogin()==(*cit)->getLogin()){
+            delete *cit;
+            cit=dbu.erase(cit);
+        }
 }
 
-Utente* DatabaseUtenti::find(const string& s) const{
+Utente* DatabaseUtenti::find(string s) const{
     for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end();++cit)
         if(s==(*cit)->getLogin())
             return *cit;

@@ -127,7 +127,7 @@ void pannelloAdminUser::slotElimina(){
     lineMail->setText("");
     lineTelefono->setText("");
     lineCF->setText("");
-    // da fixare : controller->removeU(controller->datau->find(lineLogin->text().toStdString()));
+    controller->removeU(controller->datau->find(lineLogin->text().toStdString()));
     labelSaved->setText("Eliminato!");
 }
 

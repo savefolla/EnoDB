@@ -27,7 +27,7 @@ public:
     void save() const; //salva su file
     void insert(Utente*);
     void remove(Utente*);
-    Utente* find(const string&) const;
+    Utente* find(string) const;
     Utente* autenticazione(LoginPw*) const;
     void cambiaTipo(const string&, string);
 };
