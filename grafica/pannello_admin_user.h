@@ -5,6 +5,7 @@
 #include<QLineEdit>
 #include<QFormLayout>
 #include<QLabel>
+#include<QComboBox>
 #include"pannello_admin.h"
 #include"logica/controller_admin.h"
 
@@ -31,6 +32,7 @@ private:
     QPushButton* buttonSalva;
     QPushButton* buttonIndietro;
     QLabel* labelSaved;
+    QComboBox* comboTipo;
     ControllerAdmin* controller;
 public slots:
     void slotCerca();

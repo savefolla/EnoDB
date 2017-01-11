@@ -22,7 +22,9 @@ pannelloAdminUser::pannelloAdminUser(){
     buttonSalva=new QPushButton;
     buttonIndietro=new QPushButton;
     labelSaved=new QLabel;
+    comboTipo=new QComboBox;
     QGridLayout* layout=new QGridLayout;
+
 
     buttonCerca->setText("Cerca");
     buttonElimina->setText("Elimina");
@@ -35,6 +37,9 @@ pannelloAdminUser::pannelloAdminUser(){
     labelMail->setText("Mail");
     labelTelefono->setText("Telefono");
     labelCF->setText("Codice Fiscale");
+    comboTipo->addItem("Casuale");
+    comboTipo->addItem("Utilizzatore");
+    comboTipo->addItem("Rivenditore");
     layout->addWidget(lineCerca,0,0,1,2);
     layout->addWidget(buttonCerca,0,2,1,1);
     layout->addWidget(labelLogin,1,0);
@@ -55,6 +60,7 @@ pannelloAdminUser::pannelloAdminUser(){
     layout->addWidget(buttonIndietro,8,0);
     layout->addWidget(buttonSalva,8,1);
     layout->addWidget(labelSaved,8,2);
+    layout->addWidget(comboTipo,9,0);
     this->setGeometry(200,100,800,500);
     this->setWindowTitle("Gestione Utenti - Database");
     setLayout(layout);
@@ -84,6 +90,12 @@ void pannelloAdminUser::slotCerca(){
         lineMail->setText(QString::fromStdString(i.getMail()));
         lineTelefono->setText(QString::fromStdString(i.getTelefono()));
         lineCF->setText(QString::fromStdString(i.getCf()));
+        if(dynamic_cast<UtenteCasuale*>(ute))
+            comboTipo->setCurrentIndex(0);
+        if(dynamic_cast<UtenteUtilizzatore*>(ute))
+            comboTipo->setCurrentIndex(1);
+        if(dynamic_cast<UtenteRivenditore*>(ute))
+            comboTipo->setCurrentIndex(2);
     }
 }
 
@@ -96,8 +108,13 @@ void pannelloAdminUser::slotSalva(){
                          lineMail->text().toStdString(),
                          lineTelefono->text().toStdString(),
                          lineCF->text().toStdString());
-        //inserire scelta tipologia utente (menu a tendina?)(ricordarsi di aggiungere il menu a tendi anche negli altri slots)
-        //creare nuovo utente tipologia scelta e caricarlo nel db
+        LoginPw* lp=new LoginPw(lineLogin->text().toStdString(),linePassword->text().toStdString());
+        if(comboTipo->currentText().toStdString()=="Casuale")
+            controller->datau->insert(new UtenteCasuale(*lp,*i));
+        if(comboTipo->currentText().toStdString()=="Utilizzatore")
+            controller->datau->insert(new UtenteUtilizzatore(*lp,*i));
+        if(comboTipo->currentText().toStdString()=="Rivenditore")
+            controller->datau->insert(new UtenteRivenditore(*lp,*i));
         labelSaved->setText("Salvato!");
     }
 }
@@ -110,7 +127,7 @@ void pannelloAdminUser::slotElimina(){
     lineMail->setText("");
     lineTelefono->setText("");
     lineCF->setText("");
-    controller->removeU(controller->datau->find(lineLogin->text().toStdString()));
+    // da fixare : controller->removeU(controller->datau->find(lineLogin->text().toStdString()));
     labelSaved->setText("Eliminato!");
 }
 
