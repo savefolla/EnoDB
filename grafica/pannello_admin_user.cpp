@@ -25,7 +25,6 @@ pannelloAdminUser::pannelloAdminUser(){
     comboTipo=new QComboBox;
     QGridLayout* layout=new QGridLayout;
 
-
     buttonCerca->setText("Cerca");
     buttonElimina->setText("Elimina");
     buttonSalva->setText("Salva");
@@ -47,6 +46,7 @@ pannelloAdminUser::pannelloAdminUser(){
     layout->addWidget(buttonElimina,1,2);
     layout->addWidget(labelPassword,2,0);
     layout->addWidget(linePassword,2,1);
+    layout->addWidget(comboTipo,2,2);
     layout->addWidget(labelNome,3,0);
     layout->addWidget(lineNome,3,1);
     layout->addWidget(labelCognome,4,0);
@@ -60,7 +60,6 @@ pannelloAdminUser::pannelloAdminUser(){
     layout->addWidget(buttonIndietro,8,0);
     layout->addWidget(buttonSalva,8,1);
     layout->addWidget(labelSaved,8,2);
-    layout->addWidget(comboTipo,9,0);
     this->setGeometry(200,100,800,500);
     this->setWindowTitle("Gestione Utenti - Database");
     setLayout(layout);

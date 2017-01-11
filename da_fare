@@ -1,0 +1,3 @@
+-- fixare crash elimina (sia utente che prodotto)
+-- sistemare load con file xml
+-- sistemare save con file xml (e aggiungere save su xml a ogni nuovo utente o prodotto e a ogni eliminazione)
