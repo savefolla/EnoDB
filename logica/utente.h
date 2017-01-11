@@ -54,6 +54,7 @@ public:
     Info getInfo() const;
     string getNome() const;
     string getLogin() const;
+    string getPassword() const;
 };
 
 class UtenteCasuale: public Utente{

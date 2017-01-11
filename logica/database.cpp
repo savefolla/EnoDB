@@ -56,7 +56,7 @@ void DatabaseUtenti::remove(const string& s){
 
 Utente* DatabaseUtenti::find(const string& s) const{
     for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end();++cit)
-        if(s==(*cit)->getNome())
+        if(s==(*cit)->getLogin())
             return *cit;
     return 0;
 }

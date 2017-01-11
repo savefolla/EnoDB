@@ -86,6 +86,10 @@ string Utente::getLogin() const{
     return l.getLogin();
 }
 
+string Utente::getPassword() const{
+    return l.getPassword();
+}
+
 UtenteCasuale::UtenteCasuale(LoginPw lp, Info inf): Utente(lp,inf){}
 
 vector<string> UtenteCasuale::ricerca(const DatabaseProdotti& db, const string& s){

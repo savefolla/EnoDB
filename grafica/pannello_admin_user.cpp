@@ -66,7 +66,25 @@ pannelloAdminUser::pannelloAdminUser(){
 }
 
 void pannelloAdminUser::slotCerca(){
-
+    lineLogin->setText("");
+    linePassword->setText("");
+    lineNome->setText("");
+    lineCognome->setText("");
+    lineMail->setText("");
+    lineTelefono->setText("");
+    lineCF->setText("");
+    labelSaved->setText("");
+    Utente* ute=controller->datau->find(lineCerca->text().toStdString());
+    if(ute){
+        lineLogin->setText(QString::fromStdString(ute->getLogin()));
+        linePassword->setText(QString::fromStdString(ute->getPassword()));
+        Info i=ute->getInfo();
+        lineNome->setText(QString::fromStdString(i.getNome()));
+        lineCognome->setText(QString::fromStdString(i.getCognome()));
+        lineMail->setText(QString::fromStdString(i.getMail()));
+        lineTelefono->setText(QString::fromStdString(i.getTelefono()));
+        lineCF->setText(QString::fromStdString(i.getCf()));
+    }
 }
 
 void pannelloAdminUser::slotSalva(){
