@@ -82,6 +82,7 @@ void pannelloAdminUser::slotCerca(){
     lineTelefono->setText("");
     lineCF->setText("");
     labelSaved->setText("");
+    comboTipo->setCurrentIndex(0);
     Utente* ute=controller->datau->find(lineCerca->text().toStdString());
     if(ute){
         lineLogin->setText(QString::fromStdString(ute->getLogin()));
@@ -105,22 +106,21 @@ void pannelloAdminUser::slotCerca(){
 
 void pannelloAdminUser::slotSalva(){
     if(controller->datau->find(lineLogin->text().toStdString())){
-        labelSaved->setText("Utente già presente");
-    }else{
-        Info* i=new Info(lineNome->text().toStdString(),
-                         lineCognome->text().toStdString(),
-                         lineMail->text().toStdString(),
-                         lineTelefono->text().toStdString(),
-                         lineCF->text().toStdString());
-        LoginPw* lp=new LoginPw(lineLogin->text().toStdString(),linePassword->text().toStdString());
-        if(comboTipo->currentText().toStdString()=="Casuale")
-            controller->datau->insert(new UtenteCasuale(*lp,*i));
-        if(comboTipo->currentText().toStdString()=="Utilizzatore")
-            controller->datau->insert(new UtenteUtilizzatore(*lp,*i));
-        if(comboTipo->currentText().toStdString()=="Rivenditore")
-            controller->datau->insert(new UtenteRivenditore(*lp,*i));
-        labelSaved->setText("Salvato!");
+        controller->removeU(lineLogin->text().toStdString());
     }
+    Info* i=new Info(lineNome->text().toStdString(),
+                     lineCognome->text().toStdString(),
+                     lineMail->text().toStdString(),
+                     lineTelefono->text().toStdString(),
+                     lineCF->text().toStdString());
+    LoginPw* lp=new LoginPw(lineLogin->text().toStdString(),linePassword->text().toStdString());
+    if(comboTipo->currentText().toStdString()=="Casuale")
+        controller->datau->insert(new UtenteCasuale(*lp,*i));
+    if(comboTipo->currentText().toStdString()=="Utilizzatore")
+        controller->datau->insert(new UtenteUtilizzatore(*lp,*i));
+    if(comboTipo->currentText().toStdString()=="Rivenditore")
+        controller->datau->insert(new UtenteRivenditore(*lp,*i));
+    labelSaved->setText("Salvato!");
 }
 
 void pannelloAdminUser::slotElimina(){
@@ -132,6 +132,7 @@ void pannelloAdminUser::slotElimina(){
     lineMail->setText("");
     lineTelefono->setText("");
     lineCF->setText("");
+    comboTipo->setCurrentIndex(0);
     labelSaved->setText("Eliminato!");
 }
 

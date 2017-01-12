@@ -27,7 +27,7 @@ void pannelloUtente::slotCerca(){
     header1->setText("Uso");
     header2->setText("Durata");
     header3->setText("Prezzo");
-    tableOutput->setColumnCount(prod.size());
+    tableOutput->setColumnCount(4);
     tableOutput->setHorizontalHeaderItem(0,header0);
     tableOutput->setHorizontalHeaderItem(1,header1);
     tableOutput->setHorizontalHeaderItem(2,header2);
