@@ -17,8 +17,10 @@ void DatabaseProdotti::insert(Prodotto* p){
 }
 
 void DatabaseProdotti::remove(const string& s){
-    for(vector<Prodotto*>::const_iterator cit=dbp.begin();cit!=dbp.end();++cit)
+    bool trovato(false);
+    for(vector<Prodotto*>::const_iterator cit=dbp.begin();cit!=dbp.end() && !trovato;++cit)
         if(s==(*cit)->getNome()){
+            trovato=true;
             delete *cit;
             cit=dbp.erase(cit);
         }
@@ -47,8 +49,10 @@ void DatabaseUtenti::insert(Utente* u){
 }
 
 void DatabaseUtenti::remove(const string& u){
-    for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end();++cit)
+    bool trovato(false);
+    for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end() && !trovato;++cit)
         if(u==(*cit)->getLogin()){
+            trovato=true;
             delete *cit;
             cit=dbu.erase(cit);
         }
