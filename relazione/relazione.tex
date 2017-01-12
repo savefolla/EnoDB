@@ -1,0 +1,48 @@
+\documentclass[openany, a4paper,10pt] {article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{indentfirst}
+
+\begin{document}
+
+\begin{center}
+
+\begin{Huge} Programmazione ad Oggetti \end{Huge}
+
+\vfill
+
+\begin{Large} \textbf{Nome:} Follador Saverio \\ \textbf{Matricola:} 1096984 \end{Large}
+
+\end{center}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Introduzione}
+
+\subsection{Ambiente di sviluppo}
+\begin{itemize}
+	\item \textbf{Sistema Operativo:} Manjaro Linux 16.10
+	\item \textbf{Compilatore:} GCC 6.2.1
+	\item \textbf{Versione Qt Creator:} 4.2.0
+	\item \textbf{Versione Qt:} 5.7.1
+\end{itemize}
+
+\subsection{Compilazione}
+Per compilare il progetto posizionarsi tramite terminale all'interno della cartella dello stesso. A questo punto, eseguire il comando \textbf{qmake} per generare
+il makefile. Eseguire quindi il comando \textbf{make} per avviare la compilazione. A compilazione terminata all'interno della cartella si potrà trovare un file 
+eseguibile \textbf{ProgettoP2}.
+
+\subsection{Descrizione}
+Come da consegna si è sviluppato un software che permettesse l'accesso da parte di alcune tipologie di utenti ad un database. Il database che si è scelto di 
+modellare è un database di prodotti di una qualsiasi azienda. Al database si può accedere come utente o come amministratore. Esistono tre tipologie di utenti (casuale, utilizzatore e rivenditore), ciascuna delle quali può
+ricercare prodotti conoscendone il nome e visualizzarne alcune informazioni. Le informazioni visualizzate saranno più o meno complete a seconda della tipologia
+di utente. L'amministratore può inserire, eliminare o modificare prodotti e utenti.
+
+
+
+\end{document}

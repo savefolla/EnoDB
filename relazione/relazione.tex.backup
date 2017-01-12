@@ -1,0 +1,38 @@
+\documentclass[openany, a4paper,10pt] {article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{indentfirst}
+
+\begin{document}
+
+\begin{center}
+
+\begin{Huge} Programmazione ad Oggetti \end{Huge}
+
+\vfill
+
+\begin{Large} \textbf{Nome:} Follador Saverio \\ \textbf{Matricola:} 1096984 \end{Large}
+
+\end{center}
+
+\tableofcontents
+
+\section{Introduzione}
+
+\subsection{Ambiente di sviluppo}
+\begin{itemize}
+	\item \textbf{Sistema Operativo:} Manjaro Linux 16.10
+	\item \textbf{Compilatore:} GCC 6.2.1
+	\item \textbf{Versione Qt Creator:} 4.2.0
+	\item \textbf{Versione Qt:} 5.7.1
+\end{itemize}
+
+\subsection{Compilazione}
+Per compilare il progetto posizionarsi tramite terminale all'interno della cartella dello stesso. A questo punto, eseguire il comando \textbf{qmake} per generare
+il makefile. Eseguire quindi il comando \textbf{make} per avviare la compilazione. A compilazione terminata all'interno della cartella si potrà trovare un file 
+eseguibile \textbf{ProgettoP2}.
+
+
+
+\end{document}
