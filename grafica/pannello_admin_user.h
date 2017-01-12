@@ -33,6 +33,7 @@ private:
     QPushButton* buttonIndietro;
     QLabel* labelSaved;
     QComboBox* comboTipo;
+    QLabel* labelTipo;
     ControllerAdmin* controller;
 public slots:
     void slotCerca();

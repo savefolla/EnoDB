@@ -10,7 +10,7 @@ pannelloUtente::pannelloUtente(ControllerUtente* x):controller(x){
     layout->addWidget(barraRicerca,0,0);
     layout->addWidget(buttonCerca,0,1);
     layout->addWidget(tableOutput,1,0,1,2);
-    this->setGeometry(200,100,500,500);
+    this->setGeometry(200,100,800,500);
     this->setWindowTitle("Pannello Utente - Database");
     setLayout(layout);
 

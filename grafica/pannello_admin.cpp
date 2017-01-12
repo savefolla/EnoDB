@@ -9,7 +9,7 @@ pannelloAdmin::pannelloAdmin(){
     buttonUser->setText("Gestione Utenti");
 
     this->setWindowTitle("Pannello Admin - Database");
-    this->setGeometry(200,100,100,80);
+    this->setGeometry(200,100,800,500);
     layout->addWidget(buttonProd);
     layout->addWidget(buttonUser);
     setLayout(layout);

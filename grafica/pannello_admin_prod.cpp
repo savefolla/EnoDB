@@ -63,6 +63,8 @@ void pannelloAdminProd::slotCerca(){
         lineUso->setText(QString::fromStdString(prod->getUso()));
         lineDurata->setText(QString::number(prod->getDurata()));
         linePrezzo->setText(QString::number(prod->getPrezzo()));
+    }else{
+        labelSaved->setText("Non trovato!");
     }
 }
 

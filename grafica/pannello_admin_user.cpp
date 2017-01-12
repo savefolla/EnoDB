@@ -23,6 +23,7 @@ pannelloAdminUser::pannelloAdminUser(){
     buttonIndietro=new QPushButton;
     labelSaved=new QLabel;
     comboTipo=new QComboBox;
+    labelTipo=new QLabel;
     QGridLayout* layout=new QGridLayout;
 
     buttonCerca->setText("Cerca");
@@ -39,6 +40,7 @@ pannelloAdminUser::pannelloAdminUser(){
     comboTipo->addItem("Casuale");
     comboTipo->addItem("Utilizzatore");
     comboTipo->addItem("Rivenditore");
+    labelTipo->setText("Tipo di utente");
     layout->addWidget(lineCerca,0,0,1,2);
     layout->addWidget(buttonCerca,0,2,1,1);
     layout->addWidget(labelLogin,1,0);
@@ -46,20 +48,21 @@ pannelloAdminUser::pannelloAdminUser(){
     layout->addWidget(buttonElimina,1,2);
     layout->addWidget(labelPassword,2,0);
     layout->addWidget(linePassword,2,1);
-    layout->addWidget(comboTipo,2,2);
-    layout->addWidget(labelNome,3,0);
-    layout->addWidget(lineNome,3,1);
-    layout->addWidget(labelCognome,4,0);
-    layout->addWidget(lineCognome,4,1);
-    layout->addWidget(labelMail,5,0);
-    layout->addWidget(lineMail,5,1);
-    layout->addWidget(labelTelefono,6,0);
-    layout->addWidget(lineTelefono,6,1);
-    layout->addWidget(labelCF,7,0);
-    layout->addWidget(lineCF,7,1);
-    layout->addWidget(buttonIndietro,8,0);
-    layout->addWidget(buttonSalva,8,1);
-    layout->addWidget(labelSaved,8,2);
+    layout->addWidget(labelTipo,3,0);
+    layout->addWidget(comboTipo,3,1);
+    layout->addWidget(labelNome,4,0);
+    layout->addWidget(lineNome,4,1);
+    layout->addWidget(labelCognome,5,0);
+    layout->addWidget(lineCognome,5,1);
+    layout->addWidget(labelMail,6,0);
+    layout->addWidget(lineMail,6,1);
+    layout->addWidget(labelTelefono,7,0);
+    layout->addWidget(lineTelefono,7,1);
+    layout->addWidget(labelCF,8,0);
+    layout->addWidget(lineCF,8,1);
+    layout->addWidget(buttonIndietro,9,0);
+    layout->addWidget(buttonSalva,9,1);
+    layout->addWidget(labelSaved,9,2);
     this->setGeometry(200,100,800,500);
     this->setWindowTitle("Gestione Utenti - Database");
     setLayout(layout);
@@ -95,6 +98,8 @@ void pannelloAdminUser::slotCerca(){
             comboTipo->setCurrentIndex(1);
         if(dynamic_cast<UtenteRivenditore*>(ute))
             comboTipo->setCurrentIndex(2);
+    }else{
+        labelSaved->setText("Non trovato!");
     }
 }
 

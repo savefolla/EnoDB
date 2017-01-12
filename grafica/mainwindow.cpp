@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent): QWidget(parent){
     layout->addWidget(logAdmin);
     layout->addWidget(logUser);
     layout->addWidget(passErr);
-    this->setGeometry(200,100,500,200);
+    this->setGeometry(200,100,800,500);
     setLayout(layout);
 
     connect(logAdmin,SIGNAL(clicked(bool)),this,SLOT(loginAdmin()));
