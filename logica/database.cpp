@@ -46,9 +46,9 @@ void DatabaseUtenti::insert(Utente* u){
     dbu.push_back(u);
 }
 
-void DatabaseUtenti::remove(Utente* u){
+void DatabaseUtenti::remove(const string& u){
     for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end();++cit)
-        if(u->getLogin()==(*cit)->getLogin()){
+        if(u==(*cit)->getLogin()){
             delete *cit;
             cit=dbu.erase(cit);
         }

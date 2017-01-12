@@ -15,7 +15,7 @@ void ControllerAdmin::insertP(Prodotto* p){
     datap->insert(p);
 }
 
-void ControllerAdmin::removeU(Utente* u){
+void ControllerAdmin::removeU(const string& u){
     datau->remove(u);
 }
 

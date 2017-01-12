@@ -119,6 +119,7 @@ void pannelloAdminUser::slotSalva(){
 }
 
 void pannelloAdminUser::slotElimina(){
+    controller->removeU(lineLogin->text().toStdString());
     lineLogin->setText("");
     linePassword->setText("");
     lineNome->setText("");
@@ -126,7 +127,6 @@ void pannelloAdminUser::slotElimina(){
     lineMail->setText("");
     lineTelefono->setText("");
     lineCF->setText("");
-    controller->removeU(controller->datau->find(lineLogin->text().toStdString()));
     labelSaved->setText("Eliminato!");
 }
 
