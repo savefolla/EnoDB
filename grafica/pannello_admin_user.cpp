@@ -105,9 +105,8 @@ void pannelloAdminUser::slotCerca(){
 }
 
 void pannelloAdminUser::slotSalva(){
-    if(controller->datau->find(lineLogin->text().toStdString())){
+    if(controller->datau->find(lineLogin->text().toStdString()))
         controller->removeU(lineLogin->text().toStdString());
-    }
     Info* i=new Info(lineNome->text().toStdString(),
                      lineCognome->text().toStdString(),
                      lineMail->text().toStdString(),

@@ -69,7 +69,9 @@ void pannelloAdminProd::slotCerca(){
 }
 
 void pannelloAdminProd::slotSalva(){
-    controller->insertP(new Prodotto(lineNome->text().toStdString(),lineUso->text().toStdString(),lineDurata->text().toInt(),linePrezzo->text().toDouble()));
+    if(controller->datap->find(lineNome->text().toStdString()))
+        controller->removeP(lineNome->text().toStdString());
+    controller->insertP(new Prodotto(lineNome->text().toStdString(),lineUso->text().toStdString(),lineDurata->text().toDouble(),linePrezzo->text().toDouble()));
     labelSaved->setText("Salvato!");
 }
 

@@ -1,6 +1,6 @@
 #include"prodotto.h"
 
-Prodotto::Prodotto(string n, string u, int d, double p): nome(n), uso(u), durata(d), prezzo(p){}
+Prodotto::Prodotto(string n, string u, double d, double p): nome(n), uso(u), durata(d), prezzo(p){}
 
 string Prodotto::getNome() const{
     return nome;
@@ -10,7 +10,7 @@ string Prodotto::getUso() const{
     return uso;
 }
 
-int Prodotto::getDurata() const{
+double Prodotto::getDurata() const{
     return durata;
 }
 

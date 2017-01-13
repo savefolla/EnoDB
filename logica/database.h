@@ -29,7 +29,6 @@ public:
     void remove(const string&);
     Utente* find(string) const;
     Utente* autenticazione(LoginPw*) const;
-    void cambiaTipo(const string&, string);
 };
 
 #endif // DATABASE_H

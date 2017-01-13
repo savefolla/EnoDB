@@ -23,7 +23,3 @@ void ControllerAdmin::removeP(const string& s){
     datap->remove(s);
 }
 
-void ControllerAdmin::cambiaTipo(const string& s, string x){
-    datau->cambiaTipo(s,x);
-}
-
