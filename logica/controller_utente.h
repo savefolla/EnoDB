@@ -14,7 +14,6 @@ public:
 
     ControllerUtente(LoginPw*);
     vector<string> ricercaProd(const string&);
-    void save(); //da fare
 };
 
 #endif // CONTROLLER_UTENTE_H

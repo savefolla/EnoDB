@@ -1,4 +1,4 @@
-\documentclass[openany, a4paper,10pt] {article}
+\documentclass[a4paper,10pt] {article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
@@ -16,7 +16,11 @@
 
 \end{center}
 
+\newpage
+
 \tableofcontents
+
+\newpage
 
 \section{Introduzione}
 
@@ -32,6 +36,48 @@
 Per compilare il progetto posizionarsi tramite terminale all'interno della cartella dello stesso. A questo punto, eseguire il comando \textbf{qmake} per generare
 il makefile. Eseguire quindi il comando \textbf{make} per avviare la compilazione. A compilazione terminata all'interno della cartella si potrà trovare un file 
 eseguibile \textbf{ProgettoP2}.
+
+\subsection{Descrizione}
+Come da consegna si è sviluppato un software che permettesse l'accesso da parte di alcune tipologie di utenti ad un database. Il database che si è scelto di 
+modellare è un database di prodotti di una qualsiasi azienda. Al database si può accedere come utente o come amministratore. Esistono tre tipologie di utenti (casuale, utilizzatore e rivenditore), ciascuna delle quali può
+ricercare prodotti conoscendone il nome e visualizzarne alcune informazioni. Le informazioni visualizzate saranno più o meno complete a seconda della tipologia
+di utente. L'amministratore può inserire, eliminare o modificare prodotti e utenti.
+
+\newpage
+
+\section{Struttura}
+
+\subsection{Informazioni generali}
+Per modellare i database di Utenti e Prodotti si è utilizzata la struttura dati \textbf{vector<T>} contenuta nella libreria STL. Entrambi i database sono formati
+da un vector di puntatori a oggetti del tipo rispettivo. Non sono stati utilizzati puntatori smart in quanto, data la tipologia di database modellati, non vengono
+mai effettuate copie di oggetti. La gestione del garbage è affidata alle singole funzioni di eliminazione.
+
+\subsection{Classi modellate}
+\subsubsection{Utente}
+Gli utenti a cui viene garantito l'accesso al database sono gestiti da una gerarchia di classi. Dalla classe base astratta \textbf{Utente} derivano le classi 
+\textbf{UtenteCasuale}, \textbf{UtenteUtilizzatore} e \textbf{UtenteRivenditore}. UtenteCasuale rappresenta un utente che si presuppone acceda saltuariamente al
+database dell'azienda. Pertanto ha accesso solo ad alcune informazioni dei prodotti con le sue ricerche (nome e uso del prodotto). UtenteUtilizzatore rappresenta
+un utente che utilizza i prodotti dell'azienda. In quanto utilizzatore ha accesso anche alla durata dei prodotti oltre che a nome e uso. UtenteRivenditore
+rappresenta un rivenditore dei prodotti dell'azienda. Ha accesso a nome, uso, durata e prezzo dei prodotti.\\
+La classe base Utente contiene le informazioni base di ciascun utente; le immagazzina attraverso oggetti di due classi create ad hoc: \textbf{LoginPw} e \textbf{Info}.\\
+I diversi privilegi di ricerca per i vari tipi di utenti sono implementati tramite funtori (oggetti della classe \textbf{Funtore}).
+
+\subsubsection{Database}
+I database sono modellati tramite due classi: \textbf{DatabaseProdotti} e \textbf{DatabaseUtenti}. Salvo alcune piccole variazioni sono due classi speculari, contententi nella
+parte privata il contenitore vector di puntatori e nella parte pubblica i metodi per la gestione del database. La classe DatabaseUtenti contiene inoltre un metodo
+per l'autenticazione dell'utente.
+
+\subsubsection{Salvataggio su file}
+
+\subsubsection{Controller}
+Il controller si occupa di collegare la parte logica e la parte grafica. Sono presenti due classi a questo scopo: \textbf{ControllerAdmin} e \textbf{ControllerUtente}.
+Un oggetto controller viene creato ogni qualvolta si effettua l'accesso. Il ControllerAdmin possiede metodi per inserire, modificare ed eliminare oggetti di
+entrambi i database; il ControllerUtente possiede metodi solo per interrogare il database dei prodotti.
+
+\subsubsection{Divisione Grafica/Logica}
+Si è cercato di seguire l'architettura \textbf{MVC} (Model-View-Controller). La parte grafica è separata dalla parte logica; entrambe vengono messe in comunicazione
+fra loro tramite il controller.\\
+Ciascuna 
 
 
 
