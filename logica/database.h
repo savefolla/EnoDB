@@ -1,9 +1,12 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 #include<vector>
+#include<iostream>
+#include<fstream>
+#include<math.h>
 #include "prodotto.h"
 #include "utente.h"
-using std::vector;
+using namespace std;
 
 class DatabaseProdotti{
     friend class UtenteCasuale;

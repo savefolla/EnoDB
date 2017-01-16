@@ -73,6 +73,7 @@ void pannelloAdminProd::slotSalva(){
         controller->removeP(lineNome->text().toStdString());
     controller->insertP(new Prodotto(lineNome->text().toStdString(),lineUso->text().toStdString(),lineDurata->text().toDouble(),linePrezzo->text().toDouble()));
     labelSaved->setText("Salvato!");
+    controller->datap->save();
 }
 
 void pannelloAdminProd::slotElimina(){
