@@ -1,26 +1,21 @@
 #include"database.h"
 
 void DatabaseProdotti::load(){
-    //popolazione database
-    /*dbp.push_back(new Prodotto("meta","enologia",22,35.2));
-    dbp.push_back(new Prodotto("acido","enologia",10,27.62));
-    dbp.push_back(new Prodotto("tappi","enologia",7,29.6));
-    dbp.push_back(new Prodotto("gesu","religione",6.1,45.6));*/
     ifstream file;
     string nome, uso, durata, prezzo;
-    file.open("database.txt");
+    file.open("databaseProdotti.txt");
     while(getline(file,nome)){
         getline(file,uso);
         getline(file,durata);
         getline(file,prezzo);
         dbp.push_back(new Prodotto(nome,uso,durata,prezzo));
     }
-
+    file.close();
 }
 
 void DatabaseProdotti::save() const{
     ofstream file;
-    file.open("database.txt");
+    file.open("databaseProdotti.txt");
     for(unsigned int i=0;i<dbp.size();++i){
         file<<dbp[i]->getNome()<<endl;
         file<<dbp[i]->getUso()<<endl;
@@ -52,14 +47,41 @@ Prodotto* DatabaseProdotti::find(const string& s) const{
 }
 
 void DatabaseUtenti::load(){
-    //popolazione database
-    dbu.push_back(new UtenteCasuale(*new LoginPw("saveCas","p"),*new Info("d","d","d","d","d")));
-    dbu.push_back(new UtenteUtilizzatore(*new LoginPw("saveUti","p"),*new Info("s","s","s","s","s")));
-    dbu.push_back(new UtenteRivenditore(*new LoginPw("saveProva","p"),*new Info("r","r","r","r","r")));
+    ifstream file;
+    string login, password, nome, cognome, mail, telefono, cf, tipo;
+    file.open("databaseUtenti.txt");
+    while(getline(file,login)){
+        getline(file,password);
+        getline(file,nome);
+        getline(file,cognome);
+        getline(file,mail);
+        getline(file,telefono);
+        getline(file,cf);
+        getline(file,tipo);
+        if(tipo=="Casuale")
+            dbu.push_back(new UtenteCasuale(*new LoginPw(login,password),*new Info(nome,cognome,mail,telefono,cf)));
+        if(tipo=="Utilizzatore")
+            dbu.push_back(new UtenteUtilizzatore(*new LoginPw(login,password),*new Info(nome,cognome,mail,telefono,cf)));
+        if(tipo=="Rivenditore")
+            dbu.push_back(new UtenteRivenditore(*new LoginPw(login,password),*new Info(nome,cognome,mail,telefono,cf)));
+    }
+    file.close();
 }
 
 void DatabaseUtenti::save() const{
-
+    ofstream file;
+    file.open("databaseUtenti.txt");
+    for(unsigned int i=0;i<dbu.size();++i){
+        file<<dbu[i]->getLoginPw().getLogin()<<endl;
+        file<<dbu[i]->getLoginPw().getPassword()<<endl;
+        file<<dbu[i]->getInfo().getNome()<<endl;
+        file<<dbu[i]->getInfo().getCognome()<<endl;
+        file<<dbu[i]->getInfo().getMail()<<endl;
+        file<<dbu[i]->getInfo().getTelefono()<<endl;
+        file<<dbu[i]->getInfo().getCf()<<endl;
+        file<<dbu[i]->getTipo()<<endl;
+    }
+    file.close();
 }
 
 void DatabaseUtenti::insert(Utente* u){

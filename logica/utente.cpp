@@ -2,7 +2,7 @@
 #include"database.h"
 #include"prodotto.h"
 
-LoginPw::LoginPw(const string& l, const string& pw): login(l), password(pw){}
+LoginPw::LoginPw(string l, string pw): login(l), password(pw){}
 
 string LoginPw::getLogin() const{
     return login;
@@ -92,6 +92,10 @@ string Utente::getPassword() const{
 
 UtenteCasuale::UtenteCasuale(LoginPw lp, Info inf): Utente(lp,inf){}
 
+string UtenteCasuale::getTipo() const{
+    return "Casuale";
+}
+
 vector<string> UtenteCasuale::ricerca(const DatabaseProdotti& db, const string& s){
     vector<string> res;
     bool trovato=false;
@@ -106,6 +110,10 @@ vector<string> UtenteCasuale::ricerca(const DatabaseProdotti& db, const string& 
 
 UtenteUtilizzatore::UtenteUtilizzatore(LoginPw lp, Info inf): Utente(lp,inf){}
 
+string UtenteUtilizzatore::getTipo() const{
+    return "Utilizzatore";
+}
+
 vector<string> UtenteUtilizzatore::ricerca(const DatabaseProdotti& db, const string& s){
     vector<string> res;
     bool trovato=false;
@@ -119,6 +127,10 @@ vector<string> UtenteUtilizzatore::ricerca(const DatabaseProdotti& db, const str
 }
 
 UtenteRivenditore::UtenteRivenditore(LoginPw lp, Info inf): Utente(lp,inf){}
+
+string UtenteRivenditore::getTipo() const{
+    return "Rivenditore";
+}
 
 vector<string> UtenteRivenditore::ricerca(const DatabaseProdotti& db, const string& s){
     vector<string> res;

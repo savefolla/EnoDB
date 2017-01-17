@@ -13,7 +13,7 @@ private:
     string login;
     string password;
 public:
-    LoginPw(const string& l, const string& pw);
+    LoginPw(string l, string pw);
     string getLogin() const;
     string getPassword() const;
     bool operator==(const LoginPw&) const;
@@ -49,6 +49,7 @@ protected:
 public:
     Utente(LoginPw, Info);
     virtual ~Utente();
+    virtual string getTipo() const =0;
     virtual vector<string> ricerca(const DatabaseProdotti&, const string&) =0;
     LoginPw getLoginPw() const;
     Info getInfo() const;
@@ -60,18 +61,21 @@ public:
 class UtenteCasuale: public Utente{
 public:
     UtenteCasuale(LoginPw, Info);
+    virtual string getTipo() const;
     virtual vector<string> ricerca(const DatabaseProdotti&, const string&);
 };
 
 class UtenteUtilizzatore: public Utente{
 public:
     UtenteUtilizzatore(LoginPw, Info);
+    virtual string getTipo() const;
     virtual vector<string> ricerca(const DatabaseProdotti&, const string&);
 };
 
 class UtenteRivenditore: public Utente{
 public:
     UtenteRivenditore(LoginPw, Info);
+    virtual string getTipo() const;
     virtual vector<string> ricerca(const DatabaseProdotti&, const string&);
 };
 

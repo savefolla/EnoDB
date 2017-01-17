@@ -93,11 +93,11 @@ void pannelloAdminUser::slotCerca(){
         lineMail->setText(QString::fromStdString(i.getMail()));
         lineTelefono->setText(QString::fromStdString(i.getTelefono()));
         lineCF->setText(QString::fromStdString(i.getCf()));
-        if(dynamic_cast<UtenteCasuale*>(ute))
+        if(ute->getTipo()=="Casuale")
             comboTipo->setCurrentIndex(0);
-        if(dynamic_cast<UtenteUtilizzatore*>(ute))
+        if(ute->getTipo()=="Utilizzatore")
             comboTipo->setCurrentIndex(1);
-        if(dynamic_cast<UtenteRivenditore*>(ute))
+        if(ute->getTipo()=="Rivenditore ")
             comboTipo->setCurrentIndex(2);
     }else{
         labelSaved->setText("Non trovato!");
