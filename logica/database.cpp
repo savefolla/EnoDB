@@ -8,13 +8,12 @@ void DatabaseProdotti::load(){
     dbp.push_back(new Prodotto("gesu","religione",6.1,45.6));*/
     ifstream file;
     string nome, uso, durata, prezzo;
-    file.open("database");
+    file.open("database.txt");
     while(getline(file,nome)){
         getline(file,uso);
         getline(file,durata);
-        cout<<stod(durata);
         getline(file,prezzo);
-        dbp.push_back(new Prodotto(nome,uso,stod(durata),atof(prezzo.c_str())));
+        dbp.push_back(new Prodotto(nome,uso,durata,prezzo));
     }
 
 }
@@ -23,12 +22,10 @@ void DatabaseProdotti::save() const{
     ofstream file;
     file.open("database.txt");
     for(unsigned int i=0;i<dbp.size();++i){
-        double in,f;
         file<<dbp[i]->getNome()<<endl;
         file<<dbp[i]->getUso()<<endl;
-        f=modf(dbp[i]->getDurata(),&in);
-        file<<i<<","<<f<<endl;
-        file<<(int)dbp[i]->getPrezzo()<<endl;
+        file<<dbp[i]->getDurata()<<endl;
+        file<<dbp[i]->getPrezzo()<<endl;
     }
     file.close();
 }

@@ -61,8 +61,8 @@ void pannelloAdminProd::slotCerca(){
     if(prod){
         lineNome->setText(QString::fromStdString(prod->getNome()));
         lineUso->setText(QString::fromStdString(prod->getUso()));
-        lineDurata->setText(QString::number(prod->getDurata()));
-        linePrezzo->setText(QString::number(prod->getPrezzo()));
+        lineDurata->setText(QString::fromStdString(prod->getDurata()));
+        linePrezzo->setText(QString::fromStdString(prod->getPrezzo()));
     }else{
         labelSaved->setText("Non trovato!");
     }
@@ -71,7 +71,7 @@ void pannelloAdminProd::slotCerca(){
 void pannelloAdminProd::slotSalva(){
     if(controller->datap->find(lineNome->text().toStdString()))
         controller->removeP(lineNome->text().toStdString());
-    controller->insertP(new Prodotto(lineNome->text().toStdString(),lineUso->text().toStdString(),lineDurata->text().toDouble(),linePrezzo->text().toDouble()));
+    controller->insertP(new Prodotto(lineNome->text().toStdString(),lineUso->text().toStdString(),lineDurata->text().toStdString(),linePrezzo->text().toStdString()));
     labelSaved->setText("Salvato!");
     controller->datap->save();
 }

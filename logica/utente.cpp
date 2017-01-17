@@ -52,15 +52,15 @@ void Utente::Funtore::operator ()(const Prodotto& p, vector<string>& v) const{
     {
         v.push_back(p.getNome());
         v.push_back(p.getUso());
-        v.push_back(std::to_string(p.getDurata()));
+        v.push_back(p.getDurata());
     }
         break;
     case 3:
     {
         v.push_back(p.getNome());
         v.push_back(p.getUso());
-        v.push_back(std::to_string(p.getDurata()));
-        v.push_back(std::to_string(p.getPrezzo()));
+        v.push_back(p.getDurata());
+        v.push_back(p.getPrezzo());
     }
         break;
     }

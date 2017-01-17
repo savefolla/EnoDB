@@ -9,14 +9,14 @@ class Prodotto{
 private:
     string nome;
     string uso;
-    double durata;
-    double prezzo;
+    string durata;
+    string prezzo;
 public:
-    Prodotto(string n, string u, double d, double p);
+    Prodotto(string n, string u, string d, string p);
     string getNome() const;
     string getUso() const;
-    double getDurata() const;
-    double getPrezzo() const;
+    string getDurata() const;
+    string getPrezzo() const;
 };
 
 #endif // PRODOTTO_H
