@@ -97,7 +97,7 @@ void pannelloAdminUser::slotCerca(){
             comboTipo->setCurrentIndex(0);
         if(ute->getTipo()=="Utilizzatore")
             comboTipo->setCurrentIndex(1);
-        if(ute->getTipo()=="Rivenditore ")
+        if(ute->getTipo()=="Rivenditore")
             comboTipo->setCurrentIndex(2);
     }else{
         labelSaved->setText("Non trovato!");

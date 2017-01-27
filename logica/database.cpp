@@ -27,6 +27,7 @@ void DatabaseProdotti::save() const{
 
 void DatabaseProdotti::insert(Prodotto* p){
     dbp.push_back(p);
+    this->save();
 }
 
 void DatabaseProdotti::remove(const string& s){
@@ -37,6 +38,7 @@ void DatabaseProdotti::remove(const string& s){
             delete *cit;
             cit=dbp.erase(cit);
         }
+    this->save();
 }
 
 Prodotto* DatabaseProdotti::find(const string& s) const{
@@ -86,6 +88,7 @@ void DatabaseUtenti::save() const{
 
 void DatabaseUtenti::insert(Utente* u){
     dbu.push_back(u);
+    this->save();
 }
 
 void DatabaseUtenti::remove(const string& u){
@@ -96,6 +99,7 @@ void DatabaseUtenti::remove(const string& u){
             delete *cit;
             cit=dbu.erase(cit);
         }
+    this->save();
 }
 
 Utente* DatabaseUtenti::find(string s) const{
