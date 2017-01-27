@@ -8,7 +8,7 @@
 
 \begin{center}
 
-\begin{Huge} Programmazione ad Oggetti \end{Huge}
+\begin{Huge} Relazione Progetto \\ Programmazione ad Oggetti \end{Huge}
 
 \vfill
 
@@ -32,14 +32,29 @@
 	\item \textbf{Versione Qt:} 5.7.1
 \end{itemize}
 
-\subsection{Compilazione}
+\subsection{Tempo di sviluppo}
+\begin{itemize}
+	\item \textbf{Progettazione modello e GUI:} 2.5 ore
+	\item \textbf{Codifica modello e GUI:} circa 40 ore
+	\item \textbf{Debugging:} 5 ore
+	\item \textbf{Testing:} 4 ore
+\end{itemize}
+
+
+
+\subsection{Compilazione ed esecuzione}
 Per compilare il progetto posizionarsi tramite terminale all'interno della cartella dello stesso. A questo punto, eseguire il comando \textbf{qmake} per generare
 il makefile. Eseguire quindi il comando \textbf{make} per avviare la compilazione. A compilazione terminata all'interno della cartella si potrà trovare un file 
-eseguibile \textbf{ProgettoP2}.
+eseguibile \textbf{ProgettoP2}.\\
+In cartella sono disponibili due database già popolati (\textbf{databaseUtenti.txt} e \textbf{databaseProdotti.txt}). Per utilizzarli, li si dovrà copiare nella
+propria cartella home; in caso di mancanza questi due file si creeranno automaticamente al primo salvataggio di utente per databaseUtenti.txt e di prodotto per
+databaseProdotti.txt.
+Le credenziali di accesso per l'amministratore non sono modificabili e sono (username,password)=(admin,pass).
 
 \subsection{Descrizione}
 Come da consegna si è sviluppato un software che permettesse l'accesso da parte di alcune tipologie di utenti ad un database. Il database che si è scelto di 
-modellare è un database di prodotti di una qualsiasi azienda. Al database si può accedere come utente o come amministratore. Esistono tre tipologie di utenti (casuale, utilizzatore e rivenditore), ciascuna delle quali può
+modellare è un database di prodotti di una qualsiasi azienda. Al database si può accedere come utente o come amministratore. Esistono tre tipologie di utenti (\textsl{casuale}, \textsl{utilizzatore} e \textsl{rivenditore}),
+ciascuna delle quali può
 ricercare prodotti conoscendone il nome e visualizzarne alcune informazioni. Le informazioni visualizzate saranno più o meno complete a seconda della tipologia
 di utente. L'amministratore può inserire, eliminare o modificare prodotti e utenti.
 
@@ -55,29 +70,37 @@ mai effettuate copie di oggetti. La gestione del garbage è affidata alle singol
 \subsection{Classi modellate}
 \subsubsection{Utente}
 Gli utenti a cui viene garantito l'accesso al database sono gestiti da una gerarchia di classi. Dalla classe base astratta \textbf{Utente} derivano le classi 
-\textbf{UtenteCasuale}, \textbf{UtenteUtilizzatore} e \textbf{UtenteRivenditore}. UtenteCasuale rappresenta un utente che si presuppone acceda saltuariamente al
-database dell'azienda. Pertanto ha accesso solo ad alcune informazioni dei prodotti con le sue ricerche (nome e uso del prodotto). UtenteUtilizzatore rappresenta
-un utente che utilizza i prodotti dell'azienda. In quanto utilizzatore ha accesso anche alla durata dei prodotti oltre che a nome e uso. UtenteRivenditore
+\textbf{UtenteCasuale}, \textbf{UtenteUtilizzatore} e \textbf{UtenteRivenditore}. \textsl{UtenteCasuale} rappresenta un utente che si presuppone acceda saltuariamente al
+database dell'azienda. Pertanto ha accesso solo ad alcune informazioni dei prodotti con le sue ricerche (nome e uso del prodotto). \textsl{UtenteUtilizzatore} rappresenta
+un utente che utilizza i prodotti dell'azienda. In qanto utilizzatore ha accesso anche alla durata dei prodotti oltre che a nome e uso. \textsl{UtenteRivenditore}
 rappresenta un rivenditore dei prodotti dell'azienda. Ha accesso a nome, uso, durata e prezzo dei prodotti.\\
 La classe base Utente contiene le informazioni base di ciascun utente; le immagazzina attraverso oggetti di due classi create ad hoc: \textbf{LoginPw} e \textbf{Info}.\\
 I diversi privilegi di ricerca per i vari tipi di utenti sono implementati tramite funtori (oggetti della classe \textbf{Funtore}).
 
 \subsubsection{Database}
 I database sono modellati tramite due classi: \textbf{DatabaseProdotti} e \textbf{DatabaseUtenti}. Salvo alcune piccole variazioni sono due classi speculari, contententi nella
-parte privata il contenitore vector di puntatori e nella parte pubblica i metodi per la gestione del database. La classe DatabaseUtenti contiene inoltre un metodo
+parte privata il contenitore vector di puntatori e nella parte pubblica i metodi per la gestione del database. La classe \textsl{DatabaseUtenti} contiene inoltre un metodo
 per l'autenticazione dell'utente.
 
 \subsubsection{Salvataggio su file}
+Si è deciso di mantere il salvataggio su file quanto più semplice possibile. Il salvataggio avviene tramite stampa su file .txt riga per riga degli attributi di 
+ciascun oggetto Prodotto o Utente. Eventuali attributi vuoti corrispondo a righe vuote.\\
+Il caricamento avviene pertanto scorrendo riga per riga il file e creando mano a mano gli oggetti.\\
+Ogni qualvolta il database viene aggiornato il file di testo corrispondente viene aggiornato.
 
 \subsubsection{Controller}
 Il controller si occupa di collegare la parte logica e la parte grafica. Sono presenti due classi a questo scopo: \textbf{ControllerAdmin} e \textbf{ControllerUtente}.
-Un oggetto controller viene creato ogni qualvolta si effettua l'accesso. Il ControllerAdmin possiede metodi per inserire, modificare ed eliminare oggetti di
-entrambi i database; il ControllerUtente possiede metodi solo per interrogare il database dei prodotti.
+Un oggetto controller viene creato ogni qualvolta si effettua l'accesso. \textsl{ControllerAdmin} possiede metodi per inserire, modificare ed eliminare oggetti di
+entrambi i database; \textsl{ControllerUtente} possiede metodi solo per interrogare il database dei prodotti.
 
 \subsubsection{Divisione Grafica/Logica}
 Si è cercato di seguire l'architettura \textbf{MVC} (Model-View-Controller). La parte grafica è separata dalla parte logica; entrambe vengono messe in comunicazione
 fra loro tramite il controller.\\
-Ciascuna schermata del progetto è identificata da una specifica classe
+Ciascuna schermata del progetto è identificata da una specifica classe che ha il compito di costruirne il layout e di creare le connect necessarie. Ciascuna di
+queste classi ha degli slot personalizzati, associati alle varie funzionalità del pannello in questione. Salvo alcuni casi in cui non è necessario, gli slot 
+interagiscono con un oggetto controller. \\
+Lo sviluppo dell'interfaccia grafica è stato effettuato interamente ``a mano'', senza utilizzare tool del FrameWork.
+
 
 
 

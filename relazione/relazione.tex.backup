@@ -8,7 +8,7 @@
 
 \begin{center}
 
-\begin{Huge} Programmazione ad Oggetti \end{Huge}
+\begin{Huge} Relazione Progetto \\ Programmazione ad Oggetti \end{Huge}
 
 \vfill
 
@@ -27,7 +27,7 @@
 \subsection{Ambiente di sviluppo}
 \begin{itemize}
 	\item \textbf{Sistema Operativo:} Manjaro Linux 16.10
-	\item \textbf{Compilatore:} GCC 6.2.1
+	\item \textbf{Compilatore:} GCC 6.3.1
 	\item \textbf{Versione Qt Creator:} 4.2.0
 	\item \textbf{Versione Qt:} 5.7.1
 \end{itemize}
@@ -68,6 +68,10 @@ parte privata il contenitore vector di puntatori e nella parte pubblica i metodi
 per l'autenticazione dell'utente.
 
 \subsubsection{Salvataggio su file}
+Si è deciso di mantere il salvataggio su file quanto più semplice possibile. Il salvataggio avviene tramite stampa su file .txt riga per riga degli attributi di 
+ciascun oggetto Prodotto o Utente. Eventuali attributi vuoti corrispondo a righe vuote.\\
+Il caricamento avviene pertanto scorrendo riga per riga il file e creando mano a mano gli oggetti.\\
+Ogni qualvolta il database viene aggiornato il file di testo corrispondente viene aggiornato.
 
 \subsubsection{Controller}
 Il controller si occupa di collegare la parte logica e la parte grafica. Sono presenti due classi a questo scopo: \textbf{ControllerAdmin} e \textbf{ControllerUtente}.
@@ -77,7 +81,10 @@ entrambi i database; il ControllerUtente possiede metodi solo per interrogare il
 \subsubsection{Divisione Grafica/Logica}
 Si è cercato di seguire l'architettura \textbf{MVC} (Model-View-Controller). La parte grafica è separata dalla parte logica; entrambe vengono messe in comunicazione
 fra loro tramite il controller.\\
-Ciascuna 
+Ciascuna schermata del progetto è identificata da una specifica classe che ha il compito di costruirne il layout e di creare le connect necessarie. Ciascuna di
+queste classi ha degli slot personalizzati, associati alle varie funzionalità del pannello in questione. Salvo alcuni casi in cui non è necessario, gli slot 
+interagiscono con un oggetto controller. \\
+Lo sviluppo dell'interfaccia grafica è stato effettuato interamente ``a mano'', senza utilizzare tool del FrameWork.
 
 
 
