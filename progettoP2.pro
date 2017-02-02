@@ -47,5 +47,4 @@ HEADERS  += \
     grafica/pannello_admin_prod.h \
     grafica/pannello_admin_user.h
 
-DISTFILES += \
-    da_fare
+DISTFILES +=
