@@ -19,7 +19,7 @@ public:
     void save() const; //salva su file
     void insert(Prodotto*);
     void remove(const string&);
-    Prodotto* find(const string&) const;
+    Prodotto* find(const string&);
 };
 
 class DatabaseUtenti{
@@ -30,7 +30,7 @@ public:
     void save() const; //salva su file
     void insert(Utente*);
     void remove(const string&);
-    Utente* find(string) const;
+    Utente* find(string);
     Utente* autenticazione(LoginPw*) const;
 };
 

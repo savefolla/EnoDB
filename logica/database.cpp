@@ -32,7 +32,8 @@ void DatabaseProdotti::insert(Prodotto* p){
 
 void DatabaseProdotti::remove(const string& s){
     bool trovato(false);
-    for(vector<Prodotto*>::const_iterator cit=dbp.begin();cit!=dbp.end() && !trovato;++cit)
+    //for(vector<Prodotto*>::const_iterator cit=dbp.begin();cit!=dbp.end() && !trovato;++cit)
+    for(vector<Prodotto*>::iterator cit=dbp.begin();cit!=dbp.end() && !trovato;++cit)
         if(s==(*cit)->getNome()){
             trovato=true;
             delete *cit;
@@ -41,8 +42,9 @@ void DatabaseProdotti::remove(const string& s){
     this->save();
 }
 
-Prodotto* DatabaseProdotti::find(const string& s) const{
-    for(vector<Prodotto*>::const_iterator cit=dbp.begin();cit!=dbp.end();++cit)
+Prodotto* DatabaseProdotti::find(const string& s){
+    //for(vector<Prodotto*>::const_iterator cit=dbp.begin();cit!=dbp.end();++cit)
+    for(vector<Prodotto*>::iterator cit=dbp.begin();cit!=dbp.end();++cit)
         if(s==(*cit)->getNome())
             return *cit;
     return 0;
@@ -93,7 +95,8 @@ void DatabaseUtenti::insert(Utente* u){
 
 void DatabaseUtenti::remove(const string& u){
     bool trovato(false);
-    for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end() && !trovato;++cit)
+    //for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end() && !trovato;++cit)
+    for(vector<Utente*>::iterator cit=dbu.begin();cit!=dbu.end() && !trovato;++cit)
         if(u==(*cit)->getLogin()){
             trovato=true;
             delete *cit;
@@ -102,8 +105,9 @@ void DatabaseUtenti::remove(const string& u){
     this->save();
 }
 
-Utente* DatabaseUtenti::find(string s) const{
-    for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end();++cit)
+Utente* DatabaseUtenti::find(string s){
+    //for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end();++cit)
+    for(vector<Utente*>::iterator cit=dbu.begin();cit!=dbu.end();++cit)
         if(s==(*cit)->getLogin())
             return *cit;
     return 0;
