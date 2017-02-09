@@ -17,6 +17,7 @@ pannelloAdminProd::pannelloAdminProd(){
     buttonIndietro=new QPushButton;
     labelSaved=new QLabel;
     tableOutput=new QTableWidget;
+    currProd=0;
     QGridLayout* layout=new QGridLayout;
 
     buttonCerca->setText("Cerca");

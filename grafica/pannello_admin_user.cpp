@@ -25,6 +25,7 @@ pannelloAdminUser::pannelloAdminUser(){
     comboTipo=new QComboBox;
     labelTipo=new QLabel;
     tableOutput=new QTableWidget;
+    currUser=0;
     QGridLayout* layout=new QGridLayout;
 
     buttonCerca->setText("Cerca");
@@ -138,11 +139,43 @@ void pannelloAdminUser::slotCerca(){
 }
 
 void pannelloAdminUser::slotElemento(QTableWidgetItem *q){
+    if(q->column()==0){
+        lineLogin->setText("");
+        linePassword->setText("");
+        lineNome->setText("");
+        lineCognome->setText("");
+        lineMail->setText("");
+        lineTelefono->setText("");
+        lineCF->setText("");
+        labelSaved->setText("");
+        vector<Utente*> ute=controller->datau->find(lineCerca->text().toStdString());
+        for(unsigned int i=0;i<ute.size();++i){
+            if((ute[i])->getLogin()==q->text().toStdString()){
+                lineLogin->setText(QString::fromStdString((ute[i])->getLogin()));
+                linePassword->setText(QString::fromStdString((ute[i])->getPassword()));
+                lineNome->setText(QString::fromStdString((ute[i])->getInfo().getNome()));
+                lineCognome->setText(QString::fromStdString((ute[i])->getInfo().getCognome()));
+                lineMail->setText(QString::fromStdString((ute[i])->getInfo().getMail()));
+                lineTelefono->setText(QString::fromStdString((ute[i])->getInfo().getTelefono()));
+                lineCF->setText(QString::fromStdString((ute[i])->getInfo().getCf()));
+                if((ute[i])->getTipo()=="Casuale")
+                    comboTipo->setCurrentIndex(0);
+                if((ute[i])->getTipo()=="Utilizzatore")
+                    comboTipo->setCurrentIndex(1);
+                if((ute[i])->getTipo()=="Rivenditore")
+                    comboTipo->setCurrentIndex(2);
+                currUser=ute[i];
+                return;
+            }
+        }
+        labelSaved->setText("Non Trovato!");
+        currUser=0;
+    }
 
 }
 
 void pannelloAdminUser::slotSalva(){
-    if(controller->datau->find(lineLogin->text().toStdString()))
+   /* if(controller->datau->find(lineLogin->text().toStdString()))
         controller->removeU(lineLogin->text().toStdString());
     Info* i=new Info(lineNome->text().toStdString(),
                      lineCognome->text().toStdString(),
@@ -156,7 +189,7 @@ void pannelloAdminUser::slotSalva(){
         controller->datau->insert(new UtenteUtilizzatore(*lp,*i));
     if(comboTipo->currentText().toStdString()=="Rivenditore")
         controller->datau->insert(new UtenteRivenditore(*lp,*i));
-    labelSaved->setText("Salvato!");
+    labelSaved->setText("Salvato!");*/
 }
 
 void pannelloAdminUser::slotElimina(){
