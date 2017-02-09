@@ -17,3 +17,19 @@ string Prodotto::getDurata() const{
 string Prodotto::getPrezzo() const{
     return prezzo;
 }
+
+void Prodotto::setNome(string x){
+    nome=x;
+}
+
+void Prodotto::setUso(string x){
+    uso=x;
+}
+
+void Prodotto::setDurata(string x){
+    durata=x;
+}
+
+void Prodotto::setPrezzo(string x){
+    prezzo=x;
+}

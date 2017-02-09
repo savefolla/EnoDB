@@ -12,7 +12,7 @@ public:
     void insertP(Prodotto*);
     void removeU(const string&);
     void removeP(const string&);
-    void save(); //da fare
+    void save() const;
 };
 
 #endif // CONTROLLER_ADMIN_H

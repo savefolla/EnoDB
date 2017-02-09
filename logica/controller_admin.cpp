@@ -23,3 +23,7 @@ void ControllerAdmin::removeP(const string& s){
     datap->remove(s);
 }
 
+void ControllerAdmin::save() const{
+    datap->save();
+    datau->save();
+}
