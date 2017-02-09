@@ -1,5 +1,6 @@
 #ifndef PANNELLO_ADMIN_PROD_H
 #define PANNELLO_ADMIN_PROD_H
+#include<QHeaderView>
 #include<QWidget>
 #include<QPushButton>
 #include<QLineEdit>
