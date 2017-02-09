@@ -42,12 +42,15 @@ void DatabaseProdotti::remove(const string& s){
     this->save();
 }
 
-Prodotto* DatabaseProdotti::find(const string& s){
+list<Prodotto*> DatabaseProdotti::find(const string& s){
+    list<Prodotto*> res;
     //for(vector<Prodotto*>::const_iterator cit=dbp.begin();cit!=dbp.end();++cit)
-    for(vector<Prodotto*>::iterator cit=dbp.begin();cit!=dbp.end();++cit)
-        if(s==(*cit)->getNome())
-            return *cit;
-    return 0;
+    for(vector<Prodotto*>::iterator cit=dbp.begin();cit!=dbp.end();++cit){
+        string r=(*cit)->getNome();
+        if(r.find(s)!=std::string::npos)
+            res.push_back(*cit);
+    }
+    return res;
 }
 
 void DatabaseUtenti::load(){

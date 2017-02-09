@@ -2,9 +2,11 @@
 #define UTENTE_H
 #include<string>
 #include<vector>
+#include<list>
 #include"prodotto.h"
 using std::string;
 using std::vector;
+using std::list;
 
 class DatabaseProdotti;
 
@@ -50,7 +52,7 @@ public:
     Utente(LoginPw, Info);
     virtual ~Utente();
     virtual string getTipo() const =0;
-    virtual vector<string> ricerca(const DatabaseProdotti&, const string&) =0;
+    virtual vector<vector<string>> ricerca(const DatabaseProdotti&, const string&) =0;
     LoginPw getLoginPw() const;
     Info getInfo() const;
     string getNome() const;
@@ -62,21 +64,21 @@ class UtenteCasuale: public Utente{
 public:
     UtenteCasuale(LoginPw, Info);
     virtual string getTipo() const;
-    virtual vector<string> ricerca(const DatabaseProdotti&, const string&);
+    virtual vector<vector<string>> ricerca(const DatabaseProdotti&, const string&);
 };
 
 class UtenteUtilizzatore: public Utente{
 public:
     UtenteUtilizzatore(LoginPw, Info);
     virtual string getTipo() const;
-    virtual vector<string> ricerca(const DatabaseProdotti&, const string&);
+    virtual vector<vector<string>> ricerca(const DatabaseProdotti&, const string&);
 };
 
 class UtenteRivenditore: public Utente{
 public:
     UtenteRivenditore(LoginPw, Info);
     virtual string getTipo() const;
-    virtual vector<string> ricerca(const DatabaseProdotti&, const string&);
+    virtual vector<vector<string>> ricerca(const DatabaseProdotti&, const string&);
 };
 
 #endif // UTENTE_H

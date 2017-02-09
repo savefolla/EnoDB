@@ -96,15 +96,17 @@ string UtenteCasuale::getTipo() const{
     return "Casuale";
 }
 
-vector<string> UtenteCasuale::ricerca(const DatabaseProdotti& db, const string& s){
-    vector<string> res;
-    bool trovato=false;
-    for(unsigned int i=0;i<db.dbp.size() && !trovato;++i)
-        if(db.dbp[i]->getNome()==s){
-            trovato=true;
+vector<vector<string>> UtenteCasuale::ricerca(const DatabaseProdotti& db, const string& s){
+    vector<vector<string>> res;
+    for(unsigned int i=0;i<db.dbp.size();++i){
+        string r=db.dbp[i]->getNome();
+        if(r.find(s)!=std::string::npos){
             Funtore r(1);
-            r(*(db.dbp[i]),res);
+            vector<string>* v=new vector<string>;
+            r(*(db.dbp[i]),*v);
+            res.push_back(*v);
         }
+    }
     return res;
 }
 
@@ -114,15 +116,17 @@ string UtenteUtilizzatore::getTipo() const{
     return "Utilizzatore";
 }
 
-vector<string> UtenteUtilizzatore::ricerca(const DatabaseProdotti& db, const string& s){
-    vector<string> res;
-    bool trovato=false;
-    for(unsigned int i=0;i<db.dbp.size() && !trovato;++i)
-        if(db.dbp[i]->getNome()==s){
-            trovato=true;
+vector<vector<string>> UtenteUtilizzatore::ricerca(const DatabaseProdotti& db, const string& s){
+    vector<vector<string>> res;
+    for(unsigned int i=0;i<db.dbp.size();++i){
+        string r=db.dbp[i]->getNome();
+        if(r.find(s)!=std::string::npos){
             Funtore r(2);
-            r(*(db.dbp[i]),res);
+            vector<string>* v=new vector<string>;
+            r(*(db.dbp[i]),*v);
+            res.push_back(*v);
         }
+    }
     return res;
 }
 
@@ -132,14 +136,16 @@ string UtenteRivenditore::getTipo() const{
     return "Rivenditore";
 }
 
-vector<string> UtenteRivenditore::ricerca(const DatabaseProdotti& db, const string& s){
-    vector<string> res;
-    bool trovato=false;
-    for(unsigned int i=0;i<db.dbp.size() && !trovato;++i)
-        if(db.dbp[i]->getNome()==s){
-            trovato=true;
+vector<vector<string>> UtenteRivenditore::ricerca(const DatabaseProdotti& db, const string& s){
+    vector<vector<string>> res;
+    for(unsigned int i=0;i<db.dbp.size();++i){
+        string r=db.dbp[i]->getNome();
+        if(r.find(s)!=std::string::npos){
             Funtore r(3);
-            r(*(db.dbp[i]),res);
+            vector<string>* v=new vector<string>;
+            r(*(db.dbp[i]),*v);
+            res.push_back(*v);
         }
+    }
     return res;
 }

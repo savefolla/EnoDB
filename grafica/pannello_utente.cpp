@@ -18,7 +18,7 @@ pannelloUtente::pannelloUtente(ControllerUtente* x):controller(x){
 }
 
 void pannelloUtente::slotCerca(){
-    vector<string> prod=controller->ricercaProd(barraRicerca->text().toStdString());
+    vector<vector<string>> prods=controller->ricercaProd(barraRicerca->text().toStdString());
     QTableWidgetItem* header0=new QTableWidgetItem();
     QTableWidgetItem* header1=new QTableWidgetItem();
     QTableWidgetItem* header2=new QTableWidgetItem();
@@ -32,10 +32,11 @@ void pannelloUtente::slotCerca(){
     tableOutput->setHorizontalHeaderItem(1,header1);
     tableOutput->setHorizontalHeaderItem(2,header2);
     tableOutput->setHorizontalHeaderItem(3,header3);
-    tableOutput->setRowCount(tableOutput->rowCount()+1);
 
-    for(unsigned int i=0;i<prod.size();++i){
-        QTableWidgetItem* x=new QTableWidgetItem(QString::fromStdString(prod[i]));
-        tableOutput->setItem(tableOutput->rowCount()-1,i,x);
+    for(unsigned int i=0;i<prods.size();++i){
+        for(unsigned int j=0;j<prods[i].size();++j){
+            QTableWidgetItem* x=new QTableWidgetItem(QString::fromStdString((prods[i])[j]));
+            tableOutput->setItem(tableOutput->rowCount(),j,x);
+        }
     }
 }
