@@ -99,8 +99,9 @@ string UtenteCasuale::getTipo() const{
 vector<vector<string>> UtenteCasuale::ricerca(const DatabaseProdotti& db, const string& s){
     vector<vector<string>> res;
     for(unsigned int i=0;i<db.dbp.size();++i){
-        string r=db.dbp[i]->getNome();
-        if(r.find(s)!=std::string::npos){
+        string n=db.dbp[i]->getNome();
+        string u=db.dbp[i]->getUso();
+        if(n.find(s)!=std::string::npos || u.find(s)!=std::string::npos){
             Funtore r(1);
             vector<string>* v=new vector<string>;
             r(*(db.dbp[i]),*v);
@@ -119,8 +120,10 @@ string UtenteUtilizzatore::getTipo() const{
 vector<vector<string>> UtenteUtilizzatore::ricerca(const DatabaseProdotti& db, const string& s){
     vector<vector<string>> res;
     for(unsigned int i=0;i<db.dbp.size();++i){
-        string r=db.dbp[i]->getNome();
-        if(r.find(s)!=std::string::npos){
+        string n=db.dbp[i]->getNome();
+        string u=db.dbp[i]->getUso();
+        string d=db.dbp[i]->getDurata();
+        if(n.find(s)!=std::string::npos || u.find(s)!=std::string::npos || d.find(s)!=std::string::npos){
             Funtore r(2);
             vector<string>* v=new vector<string>;
             r(*(db.dbp[i]),*v);
@@ -139,8 +142,11 @@ string UtenteRivenditore::getTipo() const{
 vector<vector<string>> UtenteRivenditore::ricerca(const DatabaseProdotti& db, const string& s){
     vector<vector<string>> res;
     for(unsigned int i=0;i<db.dbp.size();++i){
-        string r=db.dbp[i]->getNome();
-        if(r.find(s)!=std::string::npos){
+        string n=db.dbp[i]->getNome();
+        string u=db.dbp[i]->getUso();
+        string d=db.dbp[i]->getDurata();
+        string p=db.dbp[i]->getPrezzo();
+        if(n.find(s)!=std::string::npos || u.find(s)!=std::string::npos || d.find(s)!=std::string::npos || p.find(s)!=std::string::npos){
             Funtore r(3);
             vector<string>* v=new vector<string>;
             r(*(db.dbp[i]),*v);

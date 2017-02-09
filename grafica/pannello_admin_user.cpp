@@ -24,6 +24,7 @@ pannelloAdminUser::pannelloAdminUser(){
     labelSaved=new QLabel;
     comboTipo=new QComboBox;
     labelTipo=new QLabel;
+    tableOutput=new QTableWidget;
     QGridLayout* layout=new QGridLayout;
 
     buttonCerca->setText("Cerca");
@@ -68,6 +69,7 @@ pannelloAdminUser::pannelloAdminUser(){
     setLayout(layout);
 
     connect(buttonCerca,SIGNAL(clicked(bool)),this,SLOT(slotCerca()));
+    connect(tableOutput,SIGNAL(itemDoubleClicked(QTableWidgetItem*)),this,SLOT(slotElemento(QTableWidgetItem*)));
     connect(buttonSalva,SIGNAL(clicked(bool)),this,SLOT(slotSalva()));
     connect(buttonElimina,SIGNAL(clicked(bool)),this,SLOT(slotElimina()));
     connect(buttonIndietro,SIGNAL(clicked(bool)),this,SLOT(slotIndietro()));
@@ -102,6 +104,10 @@ void pannelloAdminUser::slotCerca(){
     }else{
         labelSaved->setText("Non trovato!");
     }
+}
+
+void pannelloAdminUser::slotElemento(QTableWidgetItem *q){
+
 }
 
 void pannelloAdminUser::slotSalva(){

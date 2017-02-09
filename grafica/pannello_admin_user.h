@@ -1,6 +1,7 @@
 #ifndef PANNELLO_ADMIN_USER_H
 #define PANNELLO_ADMIN_USER_H
 #include<QWidget>
+#include<QTableWidget>
 #include<QPushButton>
 #include<QLineEdit>
 #include<QFormLayout>
@@ -34,9 +35,12 @@ private:
     QLabel* labelSaved;
     QComboBox* comboTipo;
     QLabel* labelTipo;
+    QTableWidget* tableOutput;
     ControllerAdmin* controller;
+    Utente* currUser;
 public slots:
     void slotCerca();
+    void slotElemento(QTableWidgetItem* q);
     void slotSalva();
     void slotElimina();
     void slotIndietro();
