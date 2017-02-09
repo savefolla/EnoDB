@@ -61,7 +61,6 @@ pannelloAdminProd::pannelloAdminProd(){
 }
 
 void pannelloAdminProd::slotCerca(){
-    labelSaved->setText("");
     vector<Prodotto*> prods=controller->datap->find(lineCerca->text().toStdString());
     lineNome->setText("");
     lineUso->setText("");

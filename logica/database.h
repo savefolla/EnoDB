@@ -30,7 +30,7 @@ public:
     void save() const; //salva su file
     void insert(Utente*);
     void remove(const string&);
-    Utente* find(string);
+    vector<Utente*> find(const string&);
     Utente* autenticazione(LoginPw*) const;
 };
 

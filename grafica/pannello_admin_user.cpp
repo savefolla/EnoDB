@@ -32,38 +32,48 @@ pannelloAdminUser::pannelloAdminUser(){
     buttonSalva->setText("Salva");
     buttonIndietro->setText("Indietro");
     labelLogin->setText("Login");
+    labelLogin->setAlignment(Qt::AlignCenter);
     labelPassword->setText("Password");
+    labelPassword->setAlignment(Qt::AlignCenter);
     labelNome->setText("Nome");
+    labelNome->setAlignment(Qt::AlignCenter);
     labelCognome->setText("Cognome");
+    labelCognome->setAlignment(Qt::AlignCenter);
     labelMail->setText("Mail");
+    labelMail->setAlignment(Qt::AlignCenter);
     labelTelefono->setText("Telefono");
+    labelTelefono->setAlignment(Qt::AlignCenter);
     labelCF->setText("Codice Fiscale");
+    labelCF->setAlignment(Qt::AlignCenter);
     comboTipo->addItem("Casuale");
     comboTipo->addItem("Utilizzatore");
     comboTipo->addItem("Rivenditore");
     labelTipo->setText("Tipo di utente");
-    layout->addWidget(lineCerca,0,0,1,2);
-    layout->addWidget(buttonCerca,0,2,1,1);
-    layout->addWidget(labelLogin,1,0);
-    layout->addWidget(lineLogin,1,1);
-    layout->addWidget(buttonElimina,1,2);
-    layout->addWidget(labelPassword,2,0);
-    layout->addWidget(linePassword,2,1);
-    layout->addWidget(labelTipo,3,0);
-    layout->addWidget(comboTipo,3,1);
-    layout->addWidget(labelNome,4,0);
-    layout->addWidget(lineNome,4,1);
-    layout->addWidget(labelCognome,5,0);
-    layout->addWidget(lineCognome,5,1);
-    layout->addWidget(labelMail,6,0);
-    layout->addWidget(lineMail,6,1);
-    layout->addWidget(labelTelefono,7,0);
-    layout->addWidget(lineTelefono,7,1);
-    layout->addWidget(labelCF,8,0);
-    layout->addWidget(lineCF,8,1);
-    layout->addWidget(buttonIndietro,9,0);
-    layout->addWidget(buttonSalva,9,1);
-    layout->addWidget(labelSaved,9,2);
+    labelTipo->setAlignment(Qt::AlignCenter);
+
+    layout->addWidget(lineCerca,0,0,1,6);
+    layout->addWidget(buttonCerca,0,6,1,1);
+    layout->addWidget(tableOutput,1,0,8,4);
+    layout->addWidget(labelLogin,1,4,1,1);
+    layout->addWidget(lineLogin,1,5,1,2);
+    layout->addWidget(labelPassword,2,4,1,1);
+    layout->addWidget(linePassword,2,5,1,2);
+    layout->addWidget(labelTipo,3,4,1,1);
+    layout->addWidget(comboTipo,3,5,1,2);
+    layout->addWidget(labelNome,4,4,1,1);
+    layout->addWidget(lineNome,4,5,1,2);
+    layout->addWidget(labelCognome,5,4,1,1);
+    layout->addWidget(lineCognome,5,5,1,2);
+    layout->addWidget(labelMail,6,4,1,1);
+    layout->addWidget(lineMail,6,5,1,2);
+    layout->addWidget(labelTelefono,7,4,1,1);
+    layout->addWidget(lineTelefono,7,5,1,2);
+    layout->addWidget(labelCF,8,4,1,1);
+    layout->addWidget(lineCF,8,5,1,2);
+    layout->addWidget(buttonIndietro,9,4,1,1);
+    layout->addWidget(buttonSalva,9,5,1,1);
+    layout->addWidget(buttonElimina,9,6,1,1);
+    layout->addWidget(labelSaved,9,3,1,1);
     this->setGeometry(200,100,800,500);
     this->setWindowTitle("Gestione Utenti - Database");
     setLayout(layout);
@@ -76,6 +86,7 @@ pannelloAdminUser::pannelloAdminUser(){
 }
 
 void pannelloAdminUser::slotCerca(){
+    vector<Utente*> ute=controller->datau->find(lineCerca->text().toStdString());
     lineLogin->setText("");
     linePassword->setText("");
     lineNome->setText("");
@@ -85,25 +96,45 @@ void pannelloAdminUser::slotCerca(){
     lineCF->setText("");
     labelSaved->setText("");
     comboTipo->setCurrentIndex(0);
-    Utente* ute=controller->datau->find(lineCerca->text().toStdString());
-    if(ute){
-        lineLogin->setText(QString::fromStdString(ute->getLogin()));
-        linePassword->setText(QString::fromStdString(ute->getPassword()));
-        Info i=ute->getInfo();
-        lineNome->setText(QString::fromStdString(i.getNome()));
-        lineCognome->setText(QString::fromStdString(i.getCognome()));
-        lineMail->setText(QString::fromStdString(i.getMail()));
-        lineTelefono->setText(QString::fromStdString(i.getTelefono()));
-        lineCF->setText(QString::fromStdString(i.getCf()));
-        if(ute->getTipo()=="Casuale")
-            comboTipo->setCurrentIndex(0);
-        if(ute->getTipo()=="Utilizzatore")
-            comboTipo->setCurrentIndex(1);
-        if(ute->getTipo()=="Rivenditore")
-            comboTipo->setCurrentIndex(2);
-    }else{
-        labelSaved->setText("Non trovato!");
+    QTableWidgetItem* header0=new QTableWidgetItem();
+    QTableWidgetItem* header1=new QTableWidgetItem();
+    QTableWidgetItem* header2=new QTableWidgetItem();
+    QTableWidgetItem* header3=new QTableWidgetItem();
+    QTableWidgetItem* header4=new QTableWidgetItem();
+    QTableWidgetItem* header5=new QTableWidgetItem();
+    QTableWidgetItem* header6=new QTableWidgetItem();
+    QTableWidgetItem* header7=new QTableWidgetItem();
+    header0->setText("Login");
+    header1->setText("Password");
+    header2->setText("Nome");
+    header3->setText("Cognome");
+    header4->setText("Mail");
+    header5->setText("Telefono");
+    header6->setText("CF");
+    header7->setText("Tipo");
+    tableOutput->setColumnCount(8);
+    tableOutput->setRowCount(0);
+    tableOutput->setHorizontalHeaderItem(0,header0);
+    tableOutput->setHorizontalHeaderItem(1,header1);
+    tableOutput->setHorizontalHeaderItem(2,header2);
+    tableOutput->setHorizontalHeaderItem(3,header3);
+    tableOutput->setHorizontalHeaderItem(4,header4);
+    tableOutput->setHorizontalHeaderItem(5,header5);
+    tableOutput->setHorizontalHeaderItem(6,header6);
+    tableOutput->setHorizontalHeaderItem(7,header7);
+
+    for(unsigned int i=0;i<ute.size();++i){
+        tableOutput->setRowCount(tableOutput->rowCount()+1);
+        tableOutput->setItem(i,0,new QTableWidgetItem(QString::fromStdString(ute[i]->getLogin())));
+        tableOutput->setItem(i,1,new QTableWidgetItem(QString::fromStdString(ute[i]->getPassword())));
+        tableOutput->setItem(i,2,new QTableWidgetItem(QString::fromStdString(ute[i]->getInfo().getNome())));
+        tableOutput->setItem(i,3,new QTableWidgetItem(QString::fromStdString(ute[i]->getInfo().getCognome())));
+        tableOutput->setItem(i,4,new QTableWidgetItem(QString::fromStdString(ute[i]->getInfo().getMail())));
+        tableOutput->setItem(i,5,new QTableWidgetItem(QString::fromStdString(ute[i]->getInfo().getTelefono())));
+        tableOutput->setItem(i,6,new QTableWidgetItem(QString::fromStdString(ute[i]->getInfo().getCf())));
+        tableOutput->setItem(i,7,new QTableWidgetItem(QString::fromStdString(ute[i]->getTipo())));
     }
+
 }
 
 void pannelloAdminUser::slotElemento(QTableWidgetItem *q){

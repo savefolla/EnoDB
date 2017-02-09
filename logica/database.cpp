@@ -108,12 +108,15 @@ void DatabaseUtenti::remove(const string& u){
     this->save();
 }
 
-Utente* DatabaseUtenti::find(string s){
+vector<Utente*> DatabaseUtenti::find(const string& s){
+    vector<Utente*> res;
     //for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end();++cit)
-    for(vector<Utente*>::iterator cit=dbu.begin();cit!=dbu.end();++cit)
-        if(s==(*cit)->getLogin())
-            return *cit;
-    return 0;
+    for(vector<Utente*>::iterator cit=dbu.begin();cit!=dbu.end();++cit){
+        string r=(*cit)->getLogin();
+        if(r.find(s)!=std::string::npos)
+            res.push_back(*cit);
+    }
+    return res;
 }
 
 Utente* DatabaseUtenti::autenticazione(LoginPw* x) const{
