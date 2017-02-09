@@ -42,8 +42,8 @@ void DatabaseProdotti::remove(const string& s){
     this->save();
 }
 
-list<Prodotto*> DatabaseProdotti::find(const string& s){
-    list<Prodotto*> res;
+vector<Prodotto*> DatabaseProdotti::find(const string& s){
+    vector<Prodotto*> res;
     //for(vector<Prodotto*>::const_iterator cit=dbp.begin();cit!=dbp.end();++cit)
     for(vector<Prodotto*>::iterator cit=dbp.begin();cit!=dbp.end();++cit){
         string r=(*cit)->getNome();

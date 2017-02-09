@@ -1,7 +1,6 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 #include<vector>
-#include<list>
 #include<iostream>
 #include<fstream>
 #include<math.h>
@@ -20,7 +19,7 @@ public:
     void save() const; //salva su file
     void insert(Prodotto*);
     void remove(const string&);
-    list<Prodotto*> find(const string&);
+    vector<Prodotto*> find(const string&);
 };
 
 class DatabaseUtenti{

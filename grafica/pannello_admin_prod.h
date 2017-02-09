@@ -5,6 +5,7 @@
 #include<QLineEdit>
 #include<QFormLayout>
 #include<QLabel>
+#include<QTableWidget>
 #include"pannello_admin.h"
 #include"logica/controller_admin.h"
 
@@ -25,9 +26,11 @@ private:
     QPushButton* buttonSalva;
     QPushButton* buttonIndietro;
     QLabel* labelSaved;
+    QTableWidget* tableOutput;
     ControllerAdmin* controller;
 public slots:
     void slotCerca();
+    void slotElemento(QTableWidgetItem* q);
     void slotSalva();
     void slotElimina();
     void slotIndietro();

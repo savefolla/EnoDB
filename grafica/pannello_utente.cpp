@@ -10,6 +10,7 @@ pannelloUtente::pannelloUtente(ControllerUtente* x):controller(x){
     layout->addWidget(barraRicerca,0,0);
     layout->addWidget(buttonCerca,0,1);
     layout->addWidget(tableOutput,1,0,1,2);
+    tableOutput->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->setGeometry(200,100,800,500);
     this->setWindowTitle("Pannello Utente - Database");
     setLayout(layout);
@@ -28,15 +29,18 @@ void pannelloUtente::slotCerca(){
     header2->setText("Durata");
     header3->setText("Prezzo");
     tableOutput->setColumnCount(4);
+    tableOutput->setRowCount(0);
     tableOutput->setHorizontalHeaderItem(0,header0);
     tableOutput->setHorizontalHeaderItem(1,header1);
     tableOutput->setHorizontalHeaderItem(2,header2);
     tableOutput->setHorizontalHeaderItem(3,header3);
 
     for(unsigned int i=0;i<prods.size();++i){
+        tableOutput->setRowCount(tableOutput->rowCount()+1);
         for(unsigned int j=0;j<prods[i].size();++j){
-            QTableWidgetItem* x=new QTableWidgetItem(QString::fromStdString((prods[i])[j]));
-            tableOutput->setItem(tableOutput->rowCount(),j,x);
+            QTableWidgetItem* x=new QTableWidgetItem();
+            x->setText(QString::fromStdString((prods[i])[j]));
+            tableOutput->setItem(i,j,x);
         }
     }
 }
