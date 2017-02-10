@@ -25,8 +25,8 @@ pannelloAdminUser::pannelloAdminUser(){
     comboTipo=new QComboBox;
     labelTipo=new QLabel;
     tableOutput=new QTableWidget;
-    QHeaderView *HorzHdr=tableOutput->horizontalHeader();
-    HorzHdr->setSectionResizeMode(QHeaderView::Stretch);
+    //QHeaderView *HorzHdr=tableOutput->horizontalHeader();
+    //HorzHdr->setSectionResizeMode(QHeaderView::Stretch);
     current=0;
     QGridLayout* layout=new QGridLayout;
 
