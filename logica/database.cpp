@@ -55,7 +55,7 @@ vector<Prodotto*> DatabaseProdotti::find(const string& s){
 
 void DatabaseUtenti::load(){
     ifstream file;
-    string login, password, nome, cognome, mail, telefono, cf, tipo;
+    string login, password, nome, cognome, mail, telefono, CF, tipo;
     file.open("databaseUtenti.txt");
     while(getline(file,login)){
         getline(file,password);
@@ -63,14 +63,14 @@ void DatabaseUtenti::load(){
         getline(file,cognome);
         getline(file,mail);
         getline(file,telefono);
-        getline(file,cf);
+        getline(file,CF);
         getline(file,tipo);
         if(tipo=="Casuale")
-            dbu.push_back(new UtenteCasuale(*new LoginPw(login,password),*new Info(nome,cognome,mail,telefono,cf)));
+            dbu.push_back(new UtenteCasuale(*new LoginPw(login,password),*new Info(nome,cognome,mail,telefono,CF)));
         if(tipo=="Utilizzatore")
-            dbu.push_back(new UtenteUtilizzatore(*new LoginPw(login,password),*new Info(nome,cognome,mail,telefono,cf)));
+            dbu.push_back(new UtenteUtilizzatore(*new LoginPw(login,password),*new Info(nome,cognome,mail,telefono,CF)));
         if(tipo=="Rivenditore")
-            dbu.push_back(new UtenteRivenditore(*new LoginPw(login,password),*new Info(nome,cognome,mail,telefono,cf)));
+            dbu.push_back(new UtenteRivenditore(*new LoginPw(login,password),*new Info(nome,cognome,mail,telefono,CF)));
     }
     file.close();
 }
@@ -85,7 +85,7 @@ void DatabaseUtenti::save() const{
         file<<dbu[i]->getInfo().getCognome()<<endl;
         file<<dbu[i]->getInfo().getMail()<<endl;
         file<<dbu[i]->getInfo().getTelefono()<<endl;
-        file<<dbu[i]->getInfo().getCf()<<endl;
+        file<<dbu[i]->getInfo().getCF()<<endl;
         file<<dbu[i]->getTipo()<<endl;
     }
     file.close();

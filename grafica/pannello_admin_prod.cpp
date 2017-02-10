@@ -62,6 +62,7 @@ pannelloAdminProd::pannelloAdminProd(){
 }
 
 void pannelloAdminProd::slotCerca(){
+    currProd=0;
     vector<Prodotto*> prods=controller->datap->find(lineCerca->text().toStdString());
     lineNome->setText("");
     lineUso->setText("");
@@ -127,6 +128,7 @@ void pannelloAdminProd::slotSalva(){
                                          lineDurata->text().toStdString(),
                                          linePrezzo->text().toStdString()));
     }
+    currProd=0;
     lineCerca->setText("");
     lineNome->setText("");
     lineUso->setText("");

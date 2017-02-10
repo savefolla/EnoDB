@@ -24,7 +24,7 @@ void LoginPw::setPassword(string s){
     password=s;
 }
 
-Info::Info(string n, string c, string m, string t, string cod): nome(n), cognome(c), mail(m), telefono(t), cf(cod){}
+Info::Info(string n, string c, string m, string t, string cod): nome(n), cognome(c), mail(m), telefono(t), CF(cod){}
 
 string Info::getNome() const{
     return nome;
@@ -42,8 +42,8 @@ string Info::getTelefono() const{
     return telefono;
 }
 
-string Info::getCf() const{
-    return cf;
+string Info::getCF() const{
+    return CF;
 }
 
 void Info::setNome(string s){
@@ -62,8 +62,8 @@ void Info::setTelefono(string s){
     telefono=s;
 }
 
-void Info::setCf(string s){
-    cf=s;
+void Info::setCF(string s){
+    CF=s;
 }
 
 Utente::Funtore::Funtore(int i): tipo(i){}
@@ -142,8 +142,8 @@ void Utente::setTelefono(string s){
     i.setTelefono(s);
 }
 
-void Utente::setCf(string s){
-    i.setCf(s);
+void Utente::setCF(string s){
+    i.setCF(s);
 }
 
 UtenteCasuale::UtenteCasuale(LoginPw lp, Info inf): Utente(lp,inf){}

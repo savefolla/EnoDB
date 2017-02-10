@@ -29,19 +29,19 @@ private:
     string cognome;
     string mail;
     string telefono;
-    string cf;
+    string CF;
 public:
     Info(string n, string c, string m, string t, string cod);
     string getNome() const;
     string getCognome() const;
     string getMail() const;
     string getTelefono() const;
-    string getCf() const;
+    string getCF() const;
     void setNome(string);
     void setCognome(string);
     void setMail(string);
     void setTelefono(string);
-    void setCf(string);
+    void setCF(string);
 };
 
 class Utente{
@@ -71,7 +71,7 @@ public:
     void setCognome(string);
     void setMail(string);
     void setTelefono(string);
-    void setCf(string);
+    void setCF(string);
 };
 
 class UtenteCasuale: public Utente{
