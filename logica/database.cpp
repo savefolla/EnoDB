@@ -32,8 +32,8 @@ void DatabaseProdotti::insert(Prodotto* p){
 
 void DatabaseProdotti::remove(const string& s){
     bool trovato(false);
-    //for(vector<Prodotto*>::const_iterator cit=dbp.begin();cit!=dbp.end() && !trovato;++cit)
-    for(vector<Prodotto*>::iterator cit=dbp.begin();cit!=dbp.end() && !trovato;++cit)
+    for(vector<Prodotto*>::const_iterator cit=dbp.begin();cit!=dbp.end() && !trovato;++cit)
+    //for(vector<Prodotto*>::iterator cit=dbp.begin();cit!=dbp.end() && !trovato;++cit)
         if(s==(*cit)->getNome()){
             trovato=true;
             delete *cit;
@@ -44,8 +44,8 @@ void DatabaseProdotti::remove(const string& s){
 
 vector<Prodotto*> DatabaseProdotti::find(const string& s){
     vector<Prodotto*> res;
-    //for(vector<Prodotto*>::const_iterator cit=dbp.begin();cit!=dbp.end();++cit)
-    for(vector<Prodotto*>::iterator cit=dbp.begin();cit!=dbp.end();++cit){
+    for(vector<Prodotto*>::const_iterator cit=dbp.begin();cit!=dbp.end();++cit){
+    //for(vector<Prodotto*>::iterator cit=dbp.begin();cit!=dbp.end();++cit){
         string n=(*cit)->getNome();
         string u=(*cit)->getUso();
         if(n.find(s)!=std::string::npos || u.find(s)!=std::string::npos)
@@ -99,8 +99,8 @@ void DatabaseUtenti::insert(Utente* u){
 
 void DatabaseUtenti::remove(const string& u){
     bool trovato(false);
-    //for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end() && !trovato;++cit)
-    for(vector<Utente*>::iterator cit=dbu.begin();cit!=dbu.end() && !trovato;++cit)
+    for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end() && !trovato;++cit)
+    //for(vector<Utente*>::iterator cit=dbu.begin();cit!=dbu.end() && !trovato;++cit)
         if(u==(*cit)->getLogin()){
             trovato=true;
             delete *cit;
@@ -111,8 +111,8 @@ void DatabaseUtenti::remove(const string& u){
 
 vector<Utente*> DatabaseUtenti::find(const string& s){
     vector<Utente*> res;
-    //for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end();++cit)
-    for(vector<Utente*>::iterator cit=dbu.begin();cit!=dbu.end();++cit){
+    for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end();++cit){
+    //for(vector<Utente*>::iterator cit=dbu.begin();cit!=dbu.end();++cit){
         string l=(*cit)->getLogin();
         if(l.find(s)!=std::string::npos)
             res.push_back(*cit);

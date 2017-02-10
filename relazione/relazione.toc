@@ -11,6 +11,6 @@
 \contentsline {subsubsection}{\numberline {2.2.1}Utente}{4}
 \contentsline {subsubsection}{\numberline {2.2.2}Prodotto}{4}
 \contentsline {subsubsection}{\numberline {2.2.3}Database}{4}
-\contentsline {subsubsection}{\numberline {2.2.4}Salvataggio su file}{4}
-\contentsline {subsubsection}{\numberline {2.2.5}Controller}{5}
-\contentsline {subsubsection}{\numberline {2.2.6}Divisione Grafica-Logica}{5}
+\contentsline {subsection}{\numberline {2.3}Salvataggio su file}{4}
+\contentsline {subsection}{\numberline {2.4}Divisione Grafica-Logica}{5}
+\contentsline {subsubsection}{\numberline {2.4.1}Controller}{5}
