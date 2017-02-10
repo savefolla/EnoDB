@@ -15,6 +15,7 @@ class MainWindow : public QWidget{
 private:
     QPushButton* logAdmin;
     QPushButton* logUser;
+    QPushButton* buttonClose;
     QLineEdit* username;
     QLineEdit* pass;
     QLabel* passErr;

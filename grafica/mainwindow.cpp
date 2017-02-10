@@ -3,6 +3,7 @@
 MainWindow::MainWindow(QWidget *parent): QWidget(parent){
     logAdmin=new QPushButton;
     logUser=new QPushButton;
+    buttonClose=new QPushButton;
     username=new QLineEdit;
     pass=new QLineEdit;
     passErr=new QLabel;
@@ -13,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent): QWidget(parent){
 
     labelUser->setText("Username");
     labelPass->setText("Password");
+    buttonClose->setText("Esci");
     logAdmin->setText("Login Admin");
     logUser->setText("Login User");
     title->setText("Login");
@@ -24,11 +26,13 @@ MainWindow::MainWindow(QWidget *parent): QWidget(parent){
     layout->addWidget(logAdmin);
     layout->addWidget(logUser);
     layout->addWidget(passErr);
+    layout->addWidget(buttonClose);
     this->setGeometry(200,100,800,500);
     setLayout(layout);
 
     connect(logAdmin,SIGNAL(clicked(bool)),this,SLOT(loginAdmin()));
     connect(logUser,SIGNAL(clicked(bool)),this,SLOT(loginUser()));
+    connect(buttonClose,SIGNAL(clicked(bool)),this,SLOT(close()));
 }
 
 void MainWindow::loginAdmin(){

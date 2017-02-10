@@ -14,10 +14,12 @@ class pannelloUtente: public QWidget{
 private:
     QLineEdit* barraRicerca;
     QPushButton* buttonCerca;
+    QPushButton* buttonLogout;
     QTableWidget* tableOutput;
     ControllerUtente* controller;
 public slots:
     void slotCerca();
+    void slotLogout();
 public:
     pannelloUtente(ControllerUtente*);
 };

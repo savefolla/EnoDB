@@ -3,21 +3,25 @@
 pannelloUtente::pannelloUtente(ControllerUtente* x):controller(x){
     barraRicerca=new QLineEdit;
     buttonCerca=new QPushButton;
+    buttonLogout=new QPushButton;
     tableOutput=new QTableWidget;
     QGridLayout* layout=new QGridLayout;
     QHeaderView *HorzHdr=tableOutput->horizontalHeader();
     HorzHdr->setSectionResizeMode(QHeaderView::Stretch);
     buttonCerca->setText("Cerca");
+    buttonLogout->setText("Logout");
 
     layout->addWidget(barraRicerca,0,0);
     layout->addWidget(buttonCerca,0,1);
-    layout->addWidget(tableOutput,1,0,1,2);
+    layout->addWidget(tableOutput,1,0,1,3);
+    layout->addWidget(buttonLogout,0,2);
     tableOutput->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->setGeometry(200,100,800,500);
     this->setWindowTitle("Pannello Utente - Database");
     setLayout(layout);
 
     connect(buttonCerca,SIGNAL(clicked(bool)),this,SLOT(slotCerca()));
+    connect(buttonLogout,SIGNAL(clicked(bool)),this,SLOT(slotLogout()));
 }
 
 void pannelloUtente::slotCerca(){
@@ -45,4 +49,10 @@ void pannelloUtente::slotCerca(){
             tableOutput->setItem(i,j,x);
         }
     }
+}
+
+void pannelloUtente::slotLogout(){
+    this->hide();
+    MainWindow* p=new MainWindow;
+    p->show();
 }

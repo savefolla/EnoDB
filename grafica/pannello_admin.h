@@ -2,6 +2,7 @@
 #define PANNELLO_ADMIN_H
 #include<QPushButton>
 #include<QFormLayout>
+#include"mainwindow.h"
 #include"pannello_admin_prod.h"
 #include"pannello_admin_user.h"
 
@@ -10,9 +11,11 @@ class pannelloAdmin: public QWidget{
 private:
     QPushButton* buttonProd;
     QPushButton* buttonUser;
+    QPushButton* buttonLogout;
 public slots:
     void slotProd();
     void slotUser();
+    void slotLogout();
 public:
     pannelloAdmin();
 };
