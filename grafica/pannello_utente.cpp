@@ -1,6 +1,7 @@
 #include"pannello_utente.h"
 
 pannelloUtente::pannelloUtente(ControllerUtente* x):controller(x){
+    this->setAttribute(Qt::WA_DeleteOnClose);
     barraRicerca=new QLineEdit;
     buttonCerca=new QPushButton;
     buttonLogout=new QPushButton;

@@ -1,6 +1,7 @@
 #include"pannello_admin.h"
 
 pannelloAdmin::pannelloAdmin(){
+    this->setAttribute(Qt::WA_DeleteOnClose);
     buttonProd=new QPushButton;
     buttonUser=new QPushButton;
     buttonLogout=new QPushButton;

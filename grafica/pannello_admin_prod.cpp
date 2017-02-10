@@ -1,6 +1,7 @@
 #include"pannello_admin_prod.h"
 
 pannelloAdminProd::pannelloAdminProd(){
+    this->setAttribute(Qt::WA_DeleteOnClose);
     controller=new ControllerAdmin;
     lineCerca=new QLineEdit;
     buttonCerca=new QPushButton;
