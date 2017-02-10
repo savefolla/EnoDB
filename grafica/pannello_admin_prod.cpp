@@ -17,6 +17,8 @@ pannelloAdminProd::pannelloAdminProd(){
     buttonIndietro=new QPushButton;
     labelSaved=new QLabel;
     tableOutput=new QTableWidget;
+    QHeaderView *HorzHdr=tableOutput->horizontalHeader();
+    HorzHdr->setSectionResizeMode(QHeaderView::Stretch);
     current=0;
     QGridLayout* layout=new QGridLayout;
 

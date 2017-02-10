@@ -6,6 +6,7 @@
 #include<QLineEdit>
 #include<QFormLayout>
 #include<QLabel>
+#include<QHeaderView>
 #include<QComboBox>
 #include"pannello_admin.h"
 #include"logica/controller_admin.h"

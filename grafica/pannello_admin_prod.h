@@ -6,6 +6,7 @@
 #include<QFormLayout>
 #include<QLabel>
 #include<QTableWidget>
+#include<QHeaderView>
 #include"pannello_admin.h"
 #include"logica/controller_admin.h"
 

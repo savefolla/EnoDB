@@ -3,6 +3,7 @@
 #include<QWidget>
 #include<QPushButton>
 #include<QLineEdit>
+#include<QHeaderView>
 #include<QTableWidget>
 #include<QGridLayout>
 #include"logica/controller_utente.h"

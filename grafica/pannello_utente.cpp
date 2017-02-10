@@ -5,6 +5,8 @@ pannelloUtente::pannelloUtente(ControllerUtente* x):controller(x){
     buttonCerca=new QPushButton;
     tableOutput=new QTableWidget;
     QGridLayout* layout=new QGridLayout;
+    QHeaderView *HorzHdr=tableOutput->horizontalHeader();
+    HorzHdr->setSectionResizeMode(QHeaderView::Stretch);
     buttonCerca->setText("Cerca");
 
     layout->addWidget(barraRicerca,0,0);
