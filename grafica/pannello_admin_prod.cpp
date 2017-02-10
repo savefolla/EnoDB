@@ -115,16 +115,22 @@ void pannelloAdminProd::slotElemento(QTableWidgetItem* q){
 }
 
 void pannelloAdminProd::slotSalva(){
-    if(current){
-        current->setNome(lineNome->text().toStdString());
-        current->setUso(lineUso->text().toStdString());
-        current->setDurata(lineDurata->text().toStdString());
-        current->setPrezzo(linePrezzo->text().toStdString());
+    if(lineNome->text().toStdString()!=""){
+        if(current){
+            current->setNome(lineNome->text().toStdString());
+            current->setUso(lineUso->text().toStdString());
+            current->setDurata(lineDurata->text().toStdString());
+            current->setPrezzo(linePrezzo->text().toStdString());
+
+        }else{
+            controller->insertP(new Prodotto(lineNome->text().toStdString(),
+                                             lineUso->text().toStdString(),
+                                             lineDurata->text().toStdString(),
+                                             linePrezzo->text().toStdString()));
+        }
     }else{
-        controller->insertP(new Prodotto(lineNome->text().toStdString(),
-                                         lineUso->text().toStdString(),
-                                         lineDurata->text().toStdString(),
-                                         linePrezzo->text().toStdString()));
+        labelSaved->setText("Nome Richiesto!");
+        return;
     }
     current=0;
     clean();
