@@ -32,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent): QWidget(parent){
 }
 
 void MainWindow::loginAdmin(){
-    if(username->text()=="admin" && pass->text()=="pass"){
+    if(username->text()=="admin" && pass->text()=="admin"){
         this->hide();
         pannelloAdmin* p=new pannelloAdmin();
         p->show();

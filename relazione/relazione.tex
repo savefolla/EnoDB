@@ -36,7 +36,7 @@
 \subsection{Tempo di sviluppo}
 \begin{itemize}
 	\item \textbf{Progettazione modello e GUI:} 2.5 ore
-	\item \textbf{Codifica modello e GUI:} circa 40 ore
+	\item \textbf{Codifica modello e GUI:} circa 45 ore
 	\item \textbf{Debugging:} 5 ore
 	\item \textbf{Testing:} 4 ore
 \end{itemize}
@@ -51,9 +51,10 @@ il makefile. Eseguire quindi il comando \textbf{make} per avviare la
 compilazione. A compilazione terminata all'interno della cartella si potrà 
 trovare un file 
 eseguibile \textbf{ProgettoP2}.\\
-In cartella sono disponibili due database già popolati 
+Nella cartella \textsl{database\textunderscore esempio} sono disponibili due database già popolati 
 (\textbf{databaseUtenti.txt} e \textbf{databaseProdotti.txt}). Per utilizzarli, 
-li si dovrà copiare nella cartella in cui si è compilato il progetto; in caso di 
+li si dovrà copiare nella cartella in cui si è compilato il progetto; in caso 
+di 
 mancanza questi due file si creeranno automaticamente al primo accesso al 
 pannello amministratore di utente per \textsl{databaseUtenti.txt} e di prodotto 
 per \textsl{databaseProdotti.txt}.
@@ -84,7 +85,8 @@ formati
 da un vector di puntatori a oggetti del tipo rispettivo. Non sono stati 
 utilizzati puntatori smart in quanto, data la tipologia di database modellati, 
 non vengono
-mai effettuate copie di oggetti. La gestione del garbage è affidata alle singole 
+mai effettuate copie di oggetti. La gestione del garbage è affidata alle 
+singole 
 funzioni di eliminazione.
 
 \subsection{Classi modellate}
@@ -118,8 +120,10 @@ visualizzare e dei metodi di \textsl{get} per ritornarli.
 I database sono modellati tramite due classi: \textbf{DatabaseProdotti} e 
 \textbf{DatabaseUtenti}. Salvo alcune piccole variazioni sono due classi 
 speculari, contententi nella
-parte privata il contenitore vector di puntatori e nella parte pubblica i metodi 
-per la gestione del database. La classe \textsl{DatabaseUtenti} contiene inoltre 
+parte privata il contenitore vector di puntatori e nella parte pubblica i 
+metodi 
+per la gestione del database. La classe \textsl{DatabaseUtenti} contiene 
+inoltre 
 un metodo
 per l'autenticazione dell'utente.
 
@@ -127,9 +131,11 @@ per l'autenticazione dell'utente.
 Si è deciso di mantere il salvataggio su file quanto più semplice possibile. Il 
 salvataggio avviene tramite stampa su file .txt riga per riga degli attributi 
 di 
-ciascun oggetto Prodotto o Utente. Eventuali attributi vuoti corrispondo a righe 
+ciascun oggetto Prodotto o Utente. Eventuali attributi vuoti corrispondo a 
+righe 
 vuote.\\
-Il caricamento avviene pertanto scorrendo riga per riga il file e creando mano a 
+Il caricamento avviene pertanto scorrendo riga per riga il file e creando mano 
+a 
 mano gli oggetti.\\
 Ogni qualvolta il database viene modificato il file di testo corrispondente 
 viene aggiornato.
@@ -149,7 +155,8 @@ Si è cercato di seguire l'architettura \textbf{MVC} (Model-View-Controller). La
 parte grafica è separata dalla parte logica; entrambe vengono messe in 
 comunicazione
 fra loro tramite il controller.\\
-Ciascuna schermata del progetto è identificata da una specifica classe che ha il 
+Ciascuna schermata del progetto è identificata da una specifica classe che ha 
+il 
 compito di costruirne il layout e di creare le connect necessarie. Ciascuna di
 queste classi ha degli slot personalizzati, associati alle varie funzionalità 
 del pannello in questione. Salvo alcuni casi in cui non è necessario, gli slot 
