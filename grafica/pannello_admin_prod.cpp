@@ -61,14 +61,18 @@ pannelloAdminProd::pannelloAdminProd(){
     connect(buttonIndietro,SIGNAL(clicked(bool)),this,SLOT(slotIndietro()));
 }
 
-void pannelloAdminProd::slotCerca(){
-    currProd=0;
-    vector<Prodotto*> prods=controller->datap->find(lineCerca->text().toStdString());
+void pannelloAdminProd::clean(){
     lineNome->setText("");
     lineUso->setText("");
     lineDurata->setText("");
     linePrezzo->setText("");
     labelSaved->setText("");
+}
+
+void pannelloAdminProd::slotCerca(){
+    currProd=0;
+    vector<Prodotto*> prods=controller->datap->find(lineCerca->text().toStdString());
+    clean();
     QTableWidgetItem* header0=new QTableWidgetItem();
     QTableWidgetItem* header1=new QTableWidgetItem();
     QTableWidgetItem* header2=new QTableWidgetItem();
@@ -95,12 +99,8 @@ void pannelloAdminProd::slotCerca(){
 
 void pannelloAdminProd::slotElemento(QTableWidgetItem* q){
     if(q->column()==0){
-        lineNome->setText("");
-        lineUso->setText("");
-        lineDurata->setText("");
-        linePrezzo->setText("");
-        labelSaved->setText("");
-        vector<Prodotto*> prod=controller->datap->find(lineCerca->text().toStdString());
+        clean();
+        vector<Prodotto*> prod=controller->datap->find(q->text().toStdString());
         for(unsigned int i=0;i<prod.size();++i){
             if((prod[i])->getNome()==q->text().toStdString()){
                 lineNome->setText(QString::fromStdString((prod[i])->getNome()));
@@ -129,11 +129,7 @@ void pannelloAdminProd::slotSalva(){
                                          linePrezzo->text().toStdString()));
     }
     currProd=0;
-    lineCerca->setText("");
-    lineNome->setText("");
-    lineUso->setText("");
-    lineDurata->setText("");
-    linePrezzo->setText("");
+    clean();
     tableOutput->setRowCount(0);
     controller->save();
     labelSaved->setText("Salvato!");
@@ -142,12 +138,7 @@ void pannelloAdminProd::slotSalva(){
 void pannelloAdminProd::slotElimina(){
     controller->removeP(lineNome->text().toStdString());
     currProd=0;
-    lineCerca->setText("");
-    lineNome->setText("");
-    lineUso->setText("");
-    lineDurata->setText("");
-    linePrezzo->setText("");
-    labelSaved->setText("");
+    clean();
     tableOutput->setRowCount(0);
     labelSaved->setText("Eliminato!");
 }

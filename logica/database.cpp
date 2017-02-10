@@ -46,8 +46,9 @@ vector<Prodotto*> DatabaseProdotti::find(const string& s){
     vector<Prodotto*> res;
     //for(vector<Prodotto*>::const_iterator cit=dbp.begin();cit!=dbp.end();++cit)
     for(vector<Prodotto*>::iterator cit=dbp.begin();cit!=dbp.end();++cit){
-        string r=(*cit)->getNome();
-        if(r.find(s)!=std::string::npos)
+        string n=(*cit)->getNome();
+        string u=(*cit)->getUso();
+        if(n.find(s)!=std::string::npos || u.find(s)!=std::string::npos)
             res.push_back(*cit);
     }
     return res;
@@ -112,8 +113,8 @@ vector<Utente*> DatabaseUtenti::find(const string& s){
     vector<Utente*> res;
     //for(vector<Utente*>::const_iterator cit=dbu.begin();cit!=dbu.end();++cit)
     for(vector<Utente*>::iterator cit=dbu.begin();cit!=dbu.end();++cit){
-        string r=(*cit)->getLogin();
-        if(r.find(s)!=std::string::npos)
+        string l=(*cit)->getLogin();
+        if(l.find(s)!=std::string::npos)
             res.push_back(*cit);
     }
     return res;

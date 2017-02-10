@@ -75,6 +75,7 @@ pannelloAdminUser::pannelloAdminUser(){
     layout->addWidget(buttonSalva,9,5,1,1);
     layout->addWidget(buttonElimina,9,6,1,1);
     layout->addWidget(labelSaved,9,3,1,1);
+    tableOutput->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->setGeometry(200,100,800,500);
     this->setWindowTitle("Gestione Utenti - Database");
     setLayout(layout);
@@ -86,9 +87,7 @@ pannelloAdminUser::pannelloAdminUser(){
     connect(buttonIndietro,SIGNAL(clicked(bool)),this,SLOT(slotIndietro()));
 }
 
-void pannelloAdminUser::slotCerca(){
-    currUser=0;
-    vector<Utente*> ute=controller->datau->find(lineCerca->text().toStdString());
+void pannelloAdminUser::clean(){
     lineLogin->setText("");
     linePassword->setText("");
     lineNome->setText("");
@@ -98,6 +97,12 @@ void pannelloAdminUser::slotCerca(){
     lineCF->setText("");
     labelSaved->setText("");
     comboTipo->setCurrentIndex(0);
+}
+
+void pannelloAdminUser::slotCerca(){
+    currUser=0;
+    vector<Utente*> ute=controller->datau->find(lineCerca->text().toStdString());
+    clean();
     QTableWidgetItem* header0=new QTableWidgetItem();
     QTableWidgetItem* header1=new QTableWidgetItem();
     QTableWidgetItem* header2=new QTableWidgetItem();
@@ -141,14 +146,7 @@ void pannelloAdminUser::slotCerca(){
 
 void pannelloAdminUser::slotElemento(QTableWidgetItem *q){
     if(q->column()==0){
-        lineLogin->setText("");
-        linePassword->setText("");
-        lineNome->setText("");
-        lineCognome->setText("");
-        lineMail->setText("");
-        lineTelefono->setText("");
-        lineCF->setText("");
-        labelSaved->setText("");
+        clean();
         vector<Utente*> ute=controller->datau->find(lineCerca->text().toStdString());
         for(unsigned int i=0;i<ute.size();++i){
             if((ute[i])->getLogin()==q->text().toStdString()){
@@ -267,14 +265,7 @@ void pannelloAdminUser::slotSalva(){
                                                                 lineCF->text().toStdString())));
     }
     currUser=0;
-    lineLogin->setText("");
-    linePassword->setText("");
-    lineNome->setText("");
-    lineCognome->setText("");
-    lineMail->setText("");
-    lineTelefono->setText("");
-    lineCF->setText("");
-    comboTipo->setCurrentIndex(0);
+    clean();
     tableOutput->setRowCount(0);
     controller->save();
     labelSaved->setText("Salvato!");
@@ -283,14 +274,7 @@ void pannelloAdminUser::slotSalva(){
 void pannelloAdminUser::slotElimina(){
     controller->removeU(lineLogin->text().toStdString());
     currUser=0;
-    lineLogin->setText("");
-    linePassword->setText("");
-    lineNome->setText("");
-    lineCognome->setText("");
-    lineMail->setText("");
-    lineTelefono->setText("");
-    lineCF->setText("");
-    comboTipo->setCurrentIndex(0);
+    clean();
     labelSaved->setText("Eliminato!");
 }
 

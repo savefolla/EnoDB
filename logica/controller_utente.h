@@ -13,7 +13,6 @@ public:
     DatabaseProdotti* datap;
 
     ControllerUtente(LoginPw*);
-    vector<vector<string>> ricercaProd(const string&);
 };
 
 #endif // CONTROLLER_UTENTE_H
