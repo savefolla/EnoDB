@@ -16,6 +16,14 @@ bool LoginPw::operator==(const LoginPw& x) const{
     return login==x.login && password==x.password;
 }
 
+void LoginPw::setLogin(string s){
+    login=s;
+}
+
+void LoginPw::setPassword(string s){
+    password=s;
+}
+
 Info::Info(string n, string c, string m, string t, string cod): nome(n), cognome(c), mail(m), telefono(t), cf(cod){}
 
 string Info::getNome() const{
@@ -36,6 +44,26 @@ string Info::getTelefono() const{
 
 string Info::getCf() const{
     return cf;
+}
+
+void Info::setNome(string s){
+    nome=s;
+}
+
+void Info::setCognome(string s){
+    cognome=s;
+}
+
+void Info::setMail(string s){
+    mail=s;
+}
+
+void Info::setTelefono(string s){
+    telefono=s;
+}
+
+void Info::setCf(string s){
+    cf=s;
 }
 
 Utente::Funtore::Funtore(int i): tipo(i){}
@@ -90,7 +118,37 @@ string Utente::getPassword() const{
     return l.getPassword();
 }
 
+void Utente::setLogin(string s){
+    l.setLogin(s);
+}
+
+void Utente::setPassword(string s){
+    l.setPassword(s);
+}
+
+void Utente::setNome(string s){
+    i.setNome(s);
+}
+
+void Utente::setCognome(string s){
+    i.setCognome(s);
+}
+
+void Utente::setMail(string s){
+    i.setMail(s);
+}
+
+void Utente::setTelefono(string s){
+    i.setTelefono(s);
+}
+
+void Utente::setCf(string s){
+    i.setCf(s);
+}
+
 UtenteCasuale::UtenteCasuale(LoginPw lp, Info inf): Utente(lp,inf){}
+
+UtenteCasuale::UtenteCasuale(const Utente& u): UtenteCasuale(u.getLoginPw(),u.getInfo()){}
 
 string UtenteCasuale::getTipo() const{
     return "Casuale";
@@ -113,6 +171,8 @@ vector<vector<string>> UtenteCasuale::ricerca(const DatabaseProdotti& db, const 
 
 UtenteUtilizzatore::UtenteUtilizzatore(LoginPw lp, Info inf): Utente(lp,inf){}
 
+UtenteUtilizzatore::UtenteUtilizzatore(const Utente& u): UtenteUtilizzatore(u.getLoginPw(),u.getInfo()){}
+
 string UtenteUtilizzatore::getTipo() const{
     return "Utilizzatore";
 }
@@ -134,6 +194,8 @@ vector<vector<string>> UtenteUtilizzatore::ricerca(const DatabaseProdotti& db, c
 }
 
 UtenteRivenditore::UtenteRivenditore(LoginPw lp, Info inf): Utente(lp,inf){}
+
+UtenteRivenditore::UtenteRivenditore(const Utente& u): UtenteRivenditore(u.getLoginPw(),u.getInfo()){}
 
 string UtenteRivenditore::getTipo() const{
     return "Rivenditore";

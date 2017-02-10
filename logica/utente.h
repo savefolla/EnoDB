@@ -18,6 +18,8 @@ public:
     LoginPw(string l, string pw);
     string getLogin() const;
     string getPassword() const;
+    void setLogin(string);
+    void setPassword(string);
     bool operator==(const LoginPw&) const;
 };
 
@@ -35,6 +37,11 @@ public:
     string getMail() const;
     string getTelefono() const;
     string getCf() const;
+    void setNome(string);
+    void setCognome(string);
+    void setMail(string);
+    void setTelefono(string);
+    void setCf(string);
 };
 
 class Utente{
@@ -58,11 +65,19 @@ public:
     string getNome() const;
     string getLogin() const;
     string getPassword() const;
+    void setLogin(string);
+    void setPassword(string);
+    void setNome(string);
+    void setCognome(string);
+    void setMail(string);
+    void setTelefono(string);
+    void setCf(string);
 };
 
 class UtenteCasuale: public Utente{
 public:
     UtenteCasuale(LoginPw, Info);
+    UtenteCasuale(const Utente&);
     virtual string getTipo() const;
     virtual vector<vector<string>> ricerca(const DatabaseProdotti&, const string&);
 };
@@ -70,6 +85,7 @@ public:
 class UtenteUtilizzatore: public Utente{
 public:
     UtenteUtilizzatore(LoginPw, Info);
+    UtenteUtilizzatore(const Utente&);
     virtual string getTipo() const;
     virtual vector<vector<string>> ricerca(const DatabaseProdotti&, const string&);
 };
@@ -77,6 +93,7 @@ public:
 class UtenteRivenditore: public Utente{
 public:
     UtenteRivenditore(LoginPw, Info);
+    UtenteRivenditore(const Utente&);
     virtual string getTipo() const;
     virtual vector<vector<string>> ricerca(const DatabaseProdotti&, const string&);
 };

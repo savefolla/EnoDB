@@ -175,25 +175,14 @@ void pannelloAdminUser::slotElemento(QTableWidgetItem *q){
 }
 
 void pannelloAdminUser::slotSalva(){
-   /* if(controller->datau->find(lineLogin->text().toStdString()))
-        controller->removeU(lineLogin->text().toStdString());
-    Info* i=new Info(lineNome->text().toStdString(),
-                     lineCognome->text().toStdString(),
-                     lineMail->text().toStdString(),
-                     lineTelefono->text().toStdString(),
-                     lineCF->text().toStdString());
-    LoginPw* lp=new LoginPw(lineLogin->text().toStdString(),linePassword->text().toStdString());
-    if(comboTipo->currentText().toStdString()=="Casuale")
-        controller->datau->insert(new UtenteCasuale(*lp,*i));
-    if(comboTipo->currentText().toStdString()=="Utilizzatore")
-        controller->datau->insert(new UtenteUtilizzatore(*lp,*i));
-    if(comboTipo->currentText().toStdString()=="Rivenditore")
-        controller->datau->insert(new UtenteRivenditore(*lp,*i));
-    labelSaved->setText("Salvato!");*/
+   if(currUser){
+       currUser->set
+   }
 }
 
 void pannelloAdminUser::slotElimina(){
     controller->removeU(lineLogin->text().toStdString());
+    currUser=0;
     lineLogin->setText("");
     linePassword->setText("");
     lineNome->setText("");
