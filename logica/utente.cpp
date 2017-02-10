@@ -154,8 +154,8 @@ string UtenteCasuale::getTipo() const{
     return "Casuale";
 }
 
-vector<vector<string>> UtenteCasuale::ricerca(const DatabaseProdotti& db, const string& s){
-    vector<vector<string>> res;
+vector<vector<string> > UtenteCasuale::ricerca(const DatabaseProdotti& db, const string& s){
+    vector<vector<string> > res;
     for(unsigned int i=0;i<db.dbp.size();++i){
         string n=db.dbp[i]->getNome();
         string u=db.dbp[i]->getUso();
@@ -177,8 +177,8 @@ string UtenteUtilizzatore::getTipo() const{
     return "Utilizzatore";
 }
 
-vector<vector<string>> UtenteUtilizzatore::ricerca(const DatabaseProdotti& db, const string& s){
-    vector<vector<string>> res;
+vector<vector<string> > UtenteUtilizzatore::ricerca(const DatabaseProdotti& db, const string& s){
+    vector<vector<string> > res;
     for(unsigned int i=0;i<db.dbp.size();++i){
         string n=db.dbp[i]->getNome();
         string u=db.dbp[i]->getUso();
@@ -201,8 +201,8 @@ string UtenteRivenditore::getTipo() const{
     return "Rivenditore";
 }
 
-vector<vector<string>> UtenteRivenditore::ricerca(const DatabaseProdotti& db, const string& s){
-    vector<vector<string>> res;
+vector<vector<string> > UtenteRivenditore::ricerca(const DatabaseProdotti& db, const string& s){
+    vector<vector<string> > res;
     for(unsigned int i=0;i<db.dbp.size();++i){
         string n=db.dbp[i]->getNome();
         string u=db.dbp[i]->getUso();

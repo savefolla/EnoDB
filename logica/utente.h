@@ -59,7 +59,7 @@ public:
     Utente(LoginPw, Info);
     virtual ~Utente();
     virtual string getTipo() const =0;
-    virtual vector<vector<string>> ricerca(const DatabaseProdotti&, const string&) =0;
+    virtual vector<vector<string> > ricerca(const DatabaseProdotti&, const string&) =0;
     LoginPw getLoginPw() const;
     Info getInfo() const;
     string getNome() const;
@@ -79,7 +79,7 @@ public:
     UtenteCasuale(LoginPw, Info);
     UtenteCasuale(const Utente&);
     virtual string getTipo() const;
-    virtual vector<vector<string>> ricerca(const DatabaseProdotti&, const string&);
+    virtual vector<vector<string> > ricerca(const DatabaseProdotti&, const string&);
 };
 
 class UtenteUtilizzatore: public Utente{
@@ -87,7 +87,7 @@ public:
     UtenteUtilizzatore(LoginPw, Info);
     UtenteUtilizzatore(const Utente&);
     virtual string getTipo() const;
-    virtual vector<vector<string>> ricerca(const DatabaseProdotti&, const string&);
+    virtual vector<vector<string> > ricerca(const DatabaseProdotti&, const string&);
 };
 
 class UtenteRivenditore: public Utente{
@@ -95,7 +95,7 @@ public:
     UtenteRivenditore(LoginPw, Info);
     UtenteRivenditore(const Utente&);
     virtual string getTipo() const;
-    virtual vector<vector<string>> ricerca(const DatabaseProdotti&, const string&);
+    virtual vector<vector<string> > ricerca(const DatabaseProdotti&, const string&);
 };
 
 #endif // UTENTE_H

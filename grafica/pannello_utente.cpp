@@ -25,7 +25,7 @@ pannelloUtente::pannelloUtente(ControllerUtente* x):controller(x){
 }
 
 void pannelloUtente::slotCerca(){
-    vector<vector<string>> prods=controller->ricercaProd(barraRicerca->text().toStdString());
+    vector<vector<string> > prods=controller->ricercaProd(barraRicerca->text().toStdString());
     QTableWidgetItem* header0=new QTableWidgetItem();
     QTableWidgetItem* header1=new QTableWidgetItem();
     QTableWidgetItem* header2=new QTableWidgetItem();
