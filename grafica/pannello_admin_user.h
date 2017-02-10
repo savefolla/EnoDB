@@ -48,6 +48,7 @@ public slots:
 public:
     pannelloAdminUser();
     void clean();
+    ~pannelloAdminUser();
 };
 
 #endif // PANNELLO_ADMIN_USER_H

@@ -55,3 +55,12 @@ void MainWindow::loginUser(){
         passErr->setText("login o password errati");
     }
 }
+
+MainWindow::~MainWindow(){
+    delete logAdmin;
+    delete logUser;
+    delete buttonClose;
+    delete username;
+    delete pass;
+    delete passErr;
+}

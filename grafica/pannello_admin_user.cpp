@@ -289,3 +289,31 @@ void pannelloAdminUser::slotIndietro(){
     pannelloAdmin* p=new pannelloAdmin;
     p->show();
 }
+
+pannelloAdminUser::~pannelloAdminUser(){
+    delete lineCerca;
+    delete buttonCerca;
+    delete buttonElimina;
+    delete labelLogin;
+    delete labelPassword;
+    delete labelNome;
+    delete labelCognome;
+    delete labelMail;
+    delete labelTelefono;
+    delete labelCF;
+    delete lineLogin;
+    delete linePassword;
+    delete lineNome;
+    delete lineCognome;
+    delete lineMail;
+    delete lineTelefono;
+    delete lineCF;
+    delete buttonSalva;
+    delete buttonIndietro;
+    delete labelSaved;
+    delete comboTipo;
+    delete labelTipo;
+    delete tableOutput;
+    delete controller;
+    delete current;
+}

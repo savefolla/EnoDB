@@ -39,6 +39,7 @@ public slots:
 public:
     pannelloAdminProd();
     void clean();
+    ~pannelloAdminProd();
 };
 
 #endif // PANNELLO_ADMIN_PROD_H

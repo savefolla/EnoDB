@@ -57,3 +57,11 @@ void pannelloUtente::slotLogout(){
     MainWindow* p=new MainWindow;
     p->show();
 }
+
+pannelloUtente::~pannelloUtente(){
+    delete barraRicerca;
+    delete buttonCerca;
+    delete buttonLogout;
+    delete tableOutput;
+    delete controller;
+}

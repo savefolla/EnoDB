@@ -155,3 +155,23 @@ void pannelloAdminProd::slotIndietro(){
     pannelloAdmin* p=new pannelloAdmin;
     p->show();
 }
+
+pannelloAdminProd::~pannelloAdminProd(){
+    delete lineCerca;
+    delete buttonCerca;
+    delete buttonElimina;
+    delete labelNome;
+    delete labelUso;
+    delete labelDurata;
+    delete labelPrezzo;
+    delete lineNome;
+    delete lineUso;
+    delete lineDurata;
+    delete linePrezzo;
+    delete buttonSalva;
+    delete buttonIndietro;
+    delete labelSaved;
+    delete tableOutput;
+    delete controller;
+    delete current;
+}

@@ -40,3 +40,9 @@ void pannelloAdmin::slotLogout(){
     MainWindow* p=new MainWindow;
     p->show();
 }
+
+pannelloAdmin::~pannelloAdmin(){
+    delete buttonLogout;
+    delete buttonProd;
+    delete buttonUser;
+}

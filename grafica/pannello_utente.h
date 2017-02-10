@@ -22,6 +22,7 @@ public slots:
     void slotLogout();
 public:
     pannelloUtente(ControllerUtente*);
+    ~pannelloUtente();
 };
 
 #endif // PANNELLO_UTENTE_H

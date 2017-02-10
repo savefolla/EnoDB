@@ -18,6 +18,7 @@ public slots:
     void slotLogout();
 public:
     pannelloAdmin();
+    ~pannelloAdmin();
 };
 
 #endif // PANNELLO_ADMIN_H
