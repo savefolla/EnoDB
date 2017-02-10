@@ -37,7 +37,7 @@ private:
     QLabel* labelTipo;
     QTableWidget* tableOutput;
     ControllerAdmin* controller;
-    Utente* currUser;
+    Utente* current;
 public slots:
     void slotCerca();
     void slotElemento(QTableWidgetItem* q);

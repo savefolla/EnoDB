@@ -17,7 +17,7 @@ pannelloAdminProd::pannelloAdminProd(){
     buttonIndietro=new QPushButton;
     labelSaved=new QLabel;
     tableOutput=new QTableWidget;
-    currProd=0;
+    current=0;
     QGridLayout* layout=new QGridLayout;
 
     buttonCerca->setText("Cerca");
@@ -45,9 +45,9 @@ pannelloAdminProd::pannelloAdminProd(){
     layout->addWidget(lineDurata,3,5,1,2);
     layout->addWidget(labelPrezzo,4,4,1,1);
     layout->addWidget(linePrezzo,4,5,1,2);
+    layout->addWidget(labelSaved,5,3,1,1);
     layout->addWidget(buttonIndietro,5,4,1,1);
     layout->addWidget(buttonSalva,5,5,1,1);
-    layout->addWidget(labelSaved,5,3,1,1);
     layout->addWidget(buttonElimina,5,6,1,1);
     tableOutput->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->setGeometry(200,100,800,500);
@@ -70,7 +70,7 @@ void pannelloAdminProd::clean(){
 }
 
 void pannelloAdminProd::slotCerca(){
-    currProd=0;
+    current=0;
     vector<Prodotto*> prods=controller->datap->find(lineCerca->text().toStdString());
     clean();
     QTableWidgetItem* header0=new QTableWidgetItem();
@@ -101,34 +101,32 @@ void pannelloAdminProd::slotElemento(QTableWidgetItem* q){
     if(q->column()==0){
         clean();
         vector<Prodotto*> prod=controller->datap->find(q->text().toStdString());
-        for(unsigned int i=0;i<prod.size();++i){
+        for(unsigned int i=0;i<prod.size();++i)
             if((prod[i])->getNome()==q->text().toStdString()){
                 lineNome->setText(QString::fromStdString((prod[i])->getNome()));
                 lineUso->setText(QString::fromStdString((prod[i])->getUso()));
                 lineDurata->setText(QString::fromStdString((prod[i])->getDurata()));
                 linePrezzo->setText(QString::fromStdString((prod[i])->getPrezzo()));
-                currProd=prod[i];
+                current=prod[i];
                 return;
             }
-        }
-        labelSaved->setText("Non trovato!");
-        currProd=0;
     }
+    labelSaved->setText("Casella errata!");
 }
 
 void pannelloAdminProd::slotSalva(){
-    if(currProd){
-        currProd->setNome(lineNome->text().toStdString());
-        currProd->setUso(lineUso->text().toStdString());
-        currProd->setDurata(lineDurata->text().toStdString());
-        currProd->setPrezzo(linePrezzo->text().toStdString());
+    if(current){
+        current->setNome(lineNome->text().toStdString());
+        current->setUso(lineUso->text().toStdString());
+        current->setDurata(lineDurata->text().toStdString());
+        current->setPrezzo(linePrezzo->text().toStdString());
     }else{
         controller->insertP(new Prodotto(lineNome->text().toStdString(),
                                          lineUso->text().toStdString(),
                                          lineDurata->text().toStdString(),
                                          linePrezzo->text().toStdString()));
     }
-    currProd=0;
+    current=0;
     clean();
     tableOutput->setRowCount(0);
     controller->save();
@@ -137,7 +135,7 @@ void pannelloAdminProd::slotSalva(){
 
 void pannelloAdminProd::slotElimina(){
     controller->removeP(lineNome->text().toStdString());
-    currProd=0;
+    current=0;
     clean();
     tableOutput->setRowCount(0);
     labelSaved->setText("Eliminato!");

@@ -25,7 +25,7 @@ pannelloAdminUser::pannelloAdminUser(){
     comboTipo=new QComboBox;
     labelTipo=new QLabel;
     tableOutput=new QTableWidget;
-    currUser=0;
+    current=0;
     QGridLayout* layout=new QGridLayout;
 
     buttonCerca->setText("Cerca");
@@ -71,10 +71,10 @@ pannelloAdminUser::pannelloAdminUser(){
     layout->addWidget(lineTelefono,7,5,1,2);
     layout->addWidget(labelCF,8,4,1,1);
     layout->addWidget(lineCF,8,5,1,2);
+    layout->addWidget(labelSaved,9,3,1,1);
     layout->addWidget(buttonIndietro,9,4,1,1);
     layout->addWidget(buttonSalva,9,5,1,1);
     layout->addWidget(buttonElimina,9,6,1,1);
-    layout->addWidget(labelSaved,9,3,1,1);
     tableOutput->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->setGeometry(200,100,800,500);
     this->setWindowTitle("Gestione Utenti - Database");
@@ -100,7 +100,7 @@ void pannelloAdminUser::clean(){
 }
 
 void pannelloAdminUser::slotCerca(){
-    currUser=0;
+    current=0;
     vector<Utente*> ute=controller->datau->find(lineCerca->text().toStdString());
     clean();
     QTableWidgetItem* header0=new QTableWidgetItem();
@@ -148,7 +148,7 @@ void pannelloAdminUser::slotElemento(QTableWidgetItem *q){
     if(q->column()==0){
         clean();
         vector<Utente*> ute=controller->datau->find(lineCerca->text().toStdString());
-        for(unsigned int i=0;i<ute.size();++i){
+        for(unsigned int i=0;i<ute.size();++i)
             if((ute[i])->getLogin()==q->text().toStdString()){
                 lineLogin->setText(QString::fromStdString((ute[i])->getLogin()));
                 linePassword->setText(QString::fromStdString((ute[i])->getPassword()));
@@ -163,77 +163,74 @@ void pannelloAdminUser::slotElemento(QTableWidgetItem *q){
                     comboTipo->setCurrentIndex(1);
                 if((ute[i])->getTipo()=="Rivenditore")
                     comboTipo->setCurrentIndex(2);
-                currUser=ute[i];
+                current=ute[i];
                 return;
             }
-        }
-        labelSaved->setText("Non Trovato!");
-        currUser=0;
     }
-
+    labelSaved->setText("Casella errata!");
 }
 
 void pannelloAdminUser::slotSalva(){
-    if(currUser){
-        if(comboTipo->currentIndex()==0 && currUser->getTipo()=="Casuale"){
-            currUser->setLogin(lineLogin->text().toStdString());
-            currUser->setPassword(linePassword->text().toStdString());
-            currUser->setNome(lineNome->text().toStdString());
-            currUser->setCognome(lineCognome->text().toStdString());
-            currUser->setMail(lineMail->text().toStdString());
-            currUser->setTelefono(lineTelefono->text().toStdString());
-            currUser->setCF(lineCF->text().toStdString());
+    if(current){
+        if(comboTipo->currentIndex()==0 && current->getTipo()=="Casuale"){
+            current->setLogin(lineLogin->text().toStdString());
+            current->setPassword(linePassword->text().toStdString());
+            current->setNome(lineNome->text().toStdString());
+            current->setCognome(lineCognome->text().toStdString());
+            current->setMail(lineMail->text().toStdString());
+            current->setTelefono(lineTelefono->text().toStdString());
+            current->setCF(lineCF->text().toStdString());
         }else{
-            if(comboTipo->currentIndex()==1 && currUser->getTipo()=="Utilizzatore"){
-                currUser->setLogin(lineLogin->text().toStdString());
-                currUser->setPassword(linePassword->text().toStdString());
-                currUser->setNome(lineNome->text().toStdString());
-                currUser->setCognome(lineCognome->text().toStdString());
-                currUser->setMail(lineMail->text().toStdString());
-                currUser->setTelefono(lineTelefono->text().toStdString());
-                currUser->setCF(lineCF->text().toStdString());
+            if(comboTipo->currentIndex()==1 && current->getTipo()=="Utilizzatore"){
+                current->setLogin(lineLogin->text().toStdString());
+                current->setPassword(linePassword->text().toStdString());
+                current->setNome(lineNome->text().toStdString());
+                current->setCognome(lineCognome->text().toStdString());
+                current->setMail(lineMail->text().toStdString());
+                current->setTelefono(lineTelefono->text().toStdString());
+                current->setCF(lineCF->text().toStdString());
             }else{
-                if(comboTipo->currentIndex()==2 && currUser->getTipo()=="Rivenditore"){
-                    currUser->setLogin(lineLogin->text().toStdString());
-                    currUser->setPassword(linePassword->text().toStdString());
-                    currUser->setNome(lineNome->text().toStdString());
-                    currUser->setCognome(lineCognome->text().toStdString());
-                    currUser->setMail(lineMail->text().toStdString());
-                    currUser->setTelefono(lineTelefono->text().toStdString());
-                    currUser->setCF(lineCF->text().toStdString());
+                if(comboTipo->currentIndex()==2 && current->getTipo()=="Rivenditore"){
+                    current->setLogin(lineLogin->text().toStdString());
+                    current->setPassword(linePassword->text().toStdString());
+                    current->setNome(lineNome->text().toStdString());
+                    current->setCognome(lineCognome->text().toStdString());
+                    current->setMail(lineMail->text().toStdString());
+                    current->setTelefono(lineTelefono->text().toStdString());
+                    current->setCF(lineCF->text().toStdString());
                 }else{
                     if(comboTipo->currentIndex()==0){
-                        controller->removeU(currUser->getLogin());
-                        currUser=new UtenteCasuale(*new LoginPw(lineLogin->text().toStdString(),
-                                                                linePassword->text().toStdString()),
-                                                   *new Info(lineNome->text().toStdString(),
-                                                             lineCognome->text().toStdString(),
-                                                             lineMail->text().toStdString(),
-                                                             lineTelefono->text().toStdString(),
-                                                             lineCF->text().toStdString()));
-                        controller->insertU(currUser);
+                        controller->removeU(current->getLogin());
+                        current=new UtenteCasuale(*new LoginPw(lineLogin->text().toStdString(),
+                                                               linePassword->text().toStdString()),
+                                                  *new Info(lineNome->text().toStdString(),
+                                                            lineCognome->text().toStdString(),
+                                                            lineMail->text().toStdString(),
+                                                            lineTelefono->text().toStdString(),
+                                                            lineCF->text().toStdString()));
+                        controller->insertU(current);
                     }
                     if(comboTipo->currentIndex()==1){
-                        controller->removeU(currUser->getLogin());
-                        currUser=new UtenteUtilizzatore(*new LoginPw(lineLogin->text().toStdString(),
-                                                                     linePassword->text().toStdString()),
-                                                        *new Info(lineNome->text().toStdString(),
-                                                                  lineCognome->text().toStdString(),
-                                                                  lineMail->text().toStdString(),
-                                                                  lineTelefono->text().toStdString(),
-                                                                  lineCF->text().toStdString()));
-                        controller->insertU(currUser);
-                    }
-                    if(comboTipo->currentIndex()==2){
-                        controller->removeU(currUser->getLogin());
-                        currUser=new UtenteRivenditore(*new LoginPw(lineLogin->text().toStdString(),
+                        controller->removeU(current->getLogin());
+                        current=new UtenteUtilizzatore(*new LoginPw(lineLogin->text().toStdString(),
                                                                     linePassword->text().toStdString()),
                                                        *new Info(lineNome->text().toStdString(),
                                                                  lineCognome->text().toStdString(),
                                                                  lineMail->text().toStdString(),
                                                                  lineTelefono->text().toStdString(),
                                                                  lineCF->text().toStdString()));
-                        controller->insertU(currUser);
+                        controller->insertU(current);
+                    }
+                    if(comboTipo->currentIndex()==2){
+                        controller->removeU(current->getLogin());
+                        current=new UtenteRivenditore(*new LoginPw(lineLogin->text().toStdString(),
+                                                                   linePassword->text().toStdString()),
+                                                      *new Info(lineNome->text().toStdString(),
+                                                                lineCognome->text().toStdString(),
+                                                                lineMail->text().toStdString(),
+                                                                lineTelefono->text().toStdString(),
+                                                                lineCF->text().toStdString()));
+                        controller->insertU(current);
                     }
                 }
             }
@@ -264,7 +261,7 @@ void pannelloAdminUser::slotSalva(){
                                                                 lineTelefono->text().toStdString(),
                                                                 lineCF->text().toStdString())));
     }
-    currUser=0;
+    current=0;
     clean();
     tableOutput->setRowCount(0);
     controller->save();
@@ -273,8 +270,9 @@ void pannelloAdminUser::slotSalva(){
 
 void pannelloAdminUser::slotElimina(){
     controller->removeU(lineLogin->text().toStdString());
-    currUser=0;
+    current=0;
     clean();
+    tableOutput->setRowCount(0);
     labelSaved->setText("Eliminato!");
 }
 

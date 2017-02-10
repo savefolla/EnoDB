@@ -19,7 +19,7 @@ pannelloUtente::pannelloUtente(ControllerUtente* x):controller(x){
 }
 
 void pannelloUtente::slotCerca(){
-    vector<Prodotto*> prods=controller->datap->find(barraRicerca->text().toStdString());
+    vector<vector<string>> prods=controller->ricercaProd(barraRicerca->text().toStdString());
     QTableWidgetItem* header0=new QTableWidgetItem();
     QTableWidgetItem* header1=new QTableWidgetItem();
     QTableWidgetItem* header2=new QTableWidgetItem();
@@ -37,9 +37,10 @@ void pannelloUtente::slotCerca(){
 
     for(unsigned int i=0;i<prods.size();++i){
         tableOutput->setRowCount(tableOutput->rowCount()+1);
-        tableOutput->setItem(i,0,new QTableWidgetItem(QString::fromStdString(prods[i]->getNome())));
-        tableOutput->setItem(i,1,new QTableWidgetItem(QString::fromStdString(prods[i]->getUso())));
-        tableOutput->setItem(i,2,new QTableWidgetItem(QString::fromStdString(prods[i]->getDurata())));
-        tableOutput->setItem(i,3,new QTableWidgetItem(QString::fromStdString(prods[i]->getPrezzo())));
+        for(unsigned int j=0;j<prods[i].size();++j){
+            QTableWidgetItem* x=new QTableWidgetItem();
+            x->setText(QString::fromStdString((prods[i])[j]));
+            tableOutput->setItem(i,j,x);
+        }
     }
 }

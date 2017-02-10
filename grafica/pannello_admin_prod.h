@@ -28,7 +28,7 @@ private:
     QLabel* labelSaved;
     QTableWidget* tableOutput;
     ControllerAdmin* controller;
-    Prodotto* currProd;
+    Prodotto* current;
 public slots:
     void slotCerca();
     void slotElemento(QTableWidgetItem* q);
