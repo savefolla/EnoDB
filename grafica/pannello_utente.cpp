@@ -53,8 +53,8 @@ void pannelloUtente::slotCerca(){
 }
 
 void pannelloUtente::slotLogout(){
-    this->hide();
     MainWindow* p=new MainWindow;
+    this->close();
     p->show();
 }
 

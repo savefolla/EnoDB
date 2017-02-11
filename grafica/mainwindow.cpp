@@ -37,9 +37,10 @@ MainWindow::MainWindow(QWidget *parent): QWidget(parent){
 
 void MainWindow::loginAdmin(){
     if(username->text()=="admin" && pass->text()=="admin"){
-        this->hide();
         pannelloAdmin* p=new pannelloAdmin();
+        this->close();
         p->show();
+
     }else{
         passErr->setText("login o password errati");
     }
@@ -48,8 +49,8 @@ void MainWindow::loginAdmin(){
 void MainWindow::loginUser(){
     ControllerUtente* controller=new ControllerUtente(new LoginPw(username->text().toStdString(),pass->text().toStdString()));
     if(controller->u){
-        this->hide();
         pannelloUtente* p=new pannelloUtente(controller);
+        this->close();
         p->show();
     }else{
         passErr->setText("login o password errati");

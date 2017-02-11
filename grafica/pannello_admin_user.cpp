@@ -285,8 +285,8 @@ void pannelloAdminUser::slotElimina(){
 }
 
 void pannelloAdminUser::slotIndietro(){
-    this->hide();
     pannelloAdmin* p=new pannelloAdmin;
+    this->close();
     p->show();
 }
 

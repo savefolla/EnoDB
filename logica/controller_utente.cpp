@@ -8,6 +8,11 @@ ControllerUtente::ControllerUtente(LoginPw* lp){
     u=datau->autenticazione(lp);
 }
 
+ControllerUtente::~ControllerUtente(){
+    delete u;
+    delete datap;
+}
+
 vector< vector<string> > ControllerUtente::ricercaProd(const string& s){
     vector< vector<string> > res=u->ricerca(*datap,s);
     return res;

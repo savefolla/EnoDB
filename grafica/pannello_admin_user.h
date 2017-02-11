@@ -47,8 +47,8 @@ public slots:
     void slotIndietro();
 public:
     pannelloAdminUser();
-    void clean();
     ~pannelloAdminUser();
+    void clean();
 };
 
 #endif // PANNELLO_ADMIN_USER_H

@@ -38,8 +38,8 @@ public slots:
     void slotIndietro();
 public:
     pannelloAdminProd();
-    void clean();
     ~pannelloAdminProd();
+    void clean();
 };
 
 #endif // PANNELLO_ADMIN_PROD_H

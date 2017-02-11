@@ -8,6 +8,7 @@ public:
     DatabaseProdotti* datap;
 
     ControllerAdmin();
+    ~ControllerAdmin();
     void insertU(Utente*);
     void insertP(Prodotto*);
     void removeU(const string&);

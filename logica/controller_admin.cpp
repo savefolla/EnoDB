@@ -7,6 +7,11 @@ ControllerAdmin::ControllerAdmin(){
     datau->load();
 }
 
+ControllerAdmin::~ControllerAdmin(){
+    delete datap;
+    delete datau;
+}
+
 void ControllerAdmin::insertU(Utente* u){
     datau->insert(u);
 }
@@ -27,3 +32,4 @@ void ControllerAdmin::save() const{
     datap->save();
     datau->save();
 }
+

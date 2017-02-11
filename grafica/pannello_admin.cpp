@@ -24,20 +24,20 @@ pannelloAdmin::pannelloAdmin(){
 }
 
 void pannelloAdmin::slotProd(){
-    this->hide();
     pannelloAdminProd* p=new pannelloAdminProd;
+    this->close();
     p->show();
 }
 
 void pannelloAdmin::slotUser(){
-    this->hide();
     pannelloAdminUser* p=new pannelloAdminUser;
+    this->close();
     p->show();
 }
 
 void pannelloAdmin::slotLogout(){
-    this->hide();
     MainWindow* p=new MainWindow;
+    this->close();
     p->show();
 }
 

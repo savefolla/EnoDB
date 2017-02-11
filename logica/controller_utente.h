@@ -13,6 +13,7 @@ public:
     DatabaseProdotti* datap;
 
     ControllerUtente(LoginPw*);
+    ~ControllerUtente();
     vector<vector<string> > ricercaProd(const string&);
 };
 

@@ -151,8 +151,8 @@ void pannelloAdminProd::slotElimina(){
 }
 
 void pannelloAdminProd::slotIndietro(){
-    this->hide();
     pannelloAdmin* p=new pannelloAdmin;
+    this->close();
     p->show();
 }
 
