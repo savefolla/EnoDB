@@ -28,6 +28,9 @@ private:
     QPushButton* buttonIndietro;
     QLabel* labelSaved;
     QTableWidget* tableOutput;
+    QLabel* labelCurrent1;
+    QLabel* labelCurrent2;
+    QPushButton* buttonX;
     ControllerAdmin* controller;
     Prodotto* current;
 public slots:
@@ -36,6 +39,7 @@ public slots:
     void slotSalva();
     void slotElimina();
     void slotIndietro();
+    void slotDeseleziona();
 public:
     pannelloAdminProd();
     ~pannelloAdminProd();

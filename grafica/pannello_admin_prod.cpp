@@ -18,6 +18,9 @@ pannelloAdminProd::pannelloAdminProd(){
     buttonIndietro=new QPushButton;
     labelSaved=new QLabel;
     tableOutput=new QTableWidget;
+    labelCurrent1=new QLabel;
+    labelCurrent2=new QLabel;
+    buttonX=new QPushButton;
     QHeaderView *HorzHdr=tableOutput->horizontalHeader();
     HorzHdr->setSectionResizeMode(QHeaderView::Stretch);
     current=0;
@@ -35,8 +38,15 @@ pannelloAdminProd::pannelloAdminProd(){
     labelPrezzo->setAlignment(Qt::AlignCenter);
     labelSaved->setText("");
     labelSaved->setAlignment(Qt::AlignCenter);
+    labelCurrent1->setText("Elemento corrente:");
+    labelCurrent1->setAlignment(Qt::AlignCenter);
+    labelCurrent2->setText("");
+    labelCurrent2->setAlignment(Qt::AlignCenter);
+    buttonX->setText("X");
+    buttonX->setVisible(false);
     buttonSalva->setText("Salva");
     buttonIndietro->setText("Indietro");
+
     layout->addWidget(lineCerca,0,0,1,6);
     layout->addWidget(buttonCerca,0,6,1,1);
     layout->addWidget(tableOutput,1,0,4,4);
@@ -49,6 +59,9 @@ pannelloAdminProd::pannelloAdminProd(){
     layout->addWidget(labelPrezzo,4,4,1,1);
     layout->addWidget(linePrezzo,4,5,1,2);
     layout->addWidget(labelSaved,5,3,1,1);
+    layout->addWidget(labelCurrent1,5,0,1,1);
+    layout->addWidget(labelCurrent2,5,1,1,1);
+    layout->addWidget(buttonX,5,2,1,1);
     layout->addWidget(buttonIndietro,5,4,1,1);
     layout->addWidget(buttonSalva,5,5,1,1);
     layout->addWidget(buttonElimina,5,6,1,1);
@@ -62,6 +75,7 @@ pannelloAdminProd::pannelloAdminProd(){
     connect(buttonSalva,SIGNAL(clicked(bool)),this,SLOT(slotSalva()));
     connect(buttonElimina,SIGNAL(clicked(bool)),this,SLOT(slotElimina()));
     connect(buttonIndietro,SIGNAL(clicked(bool)),this,SLOT(slotIndietro()));
+    connect(buttonX,SIGNAL(clicked(bool)),this,SLOT(slotDeseleziona()));
 }
 
 void pannelloAdminProd::clean(){
@@ -70,6 +84,8 @@ void pannelloAdminProd::clean(){
     lineDurata->setText("");
     linePrezzo->setText("");
     labelSaved->setText("");
+    labelCurrent2->setText("");
+    buttonX->setVisible(false);
 }
 
 void pannelloAdminProd::slotCerca(){
@@ -111,6 +127,8 @@ void pannelloAdminProd::slotElemento(QTableWidgetItem* q){
                 lineDurata->setText(QString::fromStdString((prod[i])->getDurata()));
                 linePrezzo->setText(QString::fromStdString((prod[i])->getPrezzo()));
                 current=prod[i];
+                labelCurrent2->setText(QString::fromStdString(current->getNome()));
+                buttonX->setVisible(true);
                 return;
             }
     }
@@ -156,6 +174,12 @@ void pannelloAdminProd::slotIndietro(){
     p->show();
 }
 
+void pannelloAdminProd::slotDeseleziona(){
+    current=0;
+    labelCurrent2->setText("");
+    buttonX->setVisible(false);
+}
+
 pannelloAdminProd::~pannelloAdminProd(){
     delete lineCerca;
     delete buttonCerca;
@@ -172,6 +196,9 @@ pannelloAdminProd::~pannelloAdminProd(){
     delete buttonIndietro;
     delete labelSaved;
     delete tableOutput;
+    delete labelCurrent1;
+    delete labelCurrent2;
+    delete buttonX;
     delete controller;
     delete current;
 }

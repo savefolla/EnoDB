@@ -26,6 +26,9 @@ pannelloAdminUser::pannelloAdminUser(){
     comboTipo=new QComboBox;
     labelTipo=new QLabel;
     tableOutput=new QTableWidget;
+    labelCurrent1=new QLabel;
+    labelCurrent2=new QLabel;
+    buttonX=new QPushButton;
     //QHeaderView *HorzHdr=tableOutput->horizontalHeader();
     //HorzHdr->setSectionResizeMode(QHeaderView::Stretch);
     current=0;
@@ -54,6 +57,12 @@ pannelloAdminUser::pannelloAdminUser(){
     comboTipo->addItem("Rivenditore");
     labelTipo->setText("Tipo di utente");
     labelTipo->setAlignment(Qt::AlignCenter);
+    labelCurrent1->setText("Elemento corrente:");
+    labelCurrent1->setAlignment(Qt::AlignCenter);
+    labelCurrent2->setText("");
+    labelCurrent2->setAlignment(Qt::AlignCenter);
+    buttonX->setText("X");
+    buttonX->setVisible(false);
 
     layout->addWidget(lineCerca,0,0,1,6);
     layout->addWidget(buttonCerca,0,6,1,1);
@@ -74,6 +83,9 @@ pannelloAdminUser::pannelloAdminUser(){
     layout->addWidget(lineTelefono,7,5,1,2);
     layout->addWidget(labelCF,8,4,1,1);
     layout->addWidget(lineCF,8,5,1,2);
+    layout->addWidget(labelCurrent1,9,0,1,1);
+    layout->addWidget(labelCurrent2,9,1,1,1);
+    layout->addWidget(buttonX,9,2,1,1);
     layout->addWidget(labelSaved,9,3,1,1);
     layout->addWidget(buttonIndietro,9,4,1,1);
     layout->addWidget(buttonSalva,9,5,1,1);
@@ -88,6 +100,7 @@ pannelloAdminUser::pannelloAdminUser(){
     connect(buttonSalva,SIGNAL(clicked(bool)),this,SLOT(slotSalva()));
     connect(buttonElimina,SIGNAL(clicked(bool)),this,SLOT(slotElimina()));
     connect(buttonIndietro,SIGNAL(clicked(bool)),this,SLOT(slotIndietro()));
+    connect(buttonX,SIGNAL(clicked(bool)),this,SLOT(slotDeseleziona()));
 }
 
 void pannelloAdminUser::clean(){
@@ -100,6 +113,8 @@ void pannelloAdminUser::clean(){
     lineCF->setText("");
     labelSaved->setText("");
     comboTipo->setCurrentIndex(0);
+    labelCurrent2->setText("");
+    buttonX->setVisible(false);
 }
 
 void pannelloAdminUser::slotCerca(){
@@ -167,6 +182,8 @@ void pannelloAdminUser::slotElemento(QTableWidgetItem *q){
                 if((ute[i])->getTipo()=="Rivenditore")
                     comboTipo->setCurrentIndex(2);
                 current=ute[i];
+                labelCurrent2->setText(QString::fromStdString(current->getLogin()));
+                buttonX->setVisible(true);
                 return;
             }
     }
@@ -290,6 +307,12 @@ void pannelloAdminUser::slotIndietro(){
     p->show();
 }
 
+void pannelloAdminUser::slotDeseleziona(){
+    current=0;
+    labelCurrent2->setText("");
+    buttonX->setVisible(false);
+}
+
 pannelloAdminUser::~pannelloAdminUser(){
     delete lineCerca;
     delete buttonCerca;
@@ -314,6 +337,9 @@ pannelloAdminUser::~pannelloAdminUser(){
     delete comboTipo;
     delete labelTipo;
     delete tableOutput;
+    delete labelCurrent1;
+    delete labelCurrent2;
     delete controller;
     delete current;
+    delete buttonX;
 }

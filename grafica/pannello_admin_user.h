@@ -37,6 +37,9 @@ private:
     QComboBox* comboTipo;
     QLabel* labelTipo;
     QTableWidget* tableOutput;
+    QLabel* labelCurrent1;
+    QLabel* labelCurrent2;
+    QPushButton* buttonX;
     ControllerAdmin* controller;
     Utente* current;
 public slots:
@@ -45,6 +48,7 @@ public slots:
     void slotSalva();
     void slotElimina();
     void slotIndietro();
+    void slotDeseleziona();
 public:
     pannelloAdminUser();
     ~pannelloAdminUser();
