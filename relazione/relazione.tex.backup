@@ -51,7 +51,8 @@ il makefile. Eseguire quindi il comando \textbf{make} per avviare la
 compilazione. A compilazione terminata all'interno della cartella si potrà 
 trovare un file 
 eseguibile \textbf{ProgettoP2}.\\
-Nella cartella \textsl{database\textunderscore esempio} sono disponibili due database già popolati 
+Nella cartella \textsl{database\textunderscore esempio} sono disponibili due 
+database già popolati 
 (\textbf{databaseUtenti.txt} e \textbf{databaseProdotti.txt}). Per utilizzarli, 
 li si dovrà copiare nella cartella in cui si è compilato il progetto; in caso 
 di 
@@ -59,7 +60,7 @@ mancanza questi due file si creeranno automaticamente al primo accesso al
 pannello amministratore di utente per \textsl{databaseUtenti.txt} e di prodotto 
 per \textsl{databaseProdotti.txt}.
 Le credenziali di accesso per l'amministratore sono 
-(username,password)=(admin,pass).
+(username,password)=(admin,admin).
 
 \subsection{Descrizione}
 Come da consegna si è sviluppato un software che permettesse l'accesso da parte 
@@ -69,9 +70,11 @@ Al database si può accedere come utente o come amministratore. Esistono tre
 tipologie di utenti (\textsl{casuale}, \textsl{utilizzatore} e 
 \textsl{rivenditore}),
 ciascuna delle quali può
-ricercare prodotti conoscendone il nome e visualizzarne alcune informazioni. Le 
+ricercare prodotti e visualizzarne alcune informazioni. Le 
 informazioni visualizzate saranno più o meno complete a seconda della tipologia
-di utente. L'amministratore può inserire, eliminare o modificare prodotti e 
+di utente. La ricerca riguarda più o meno caratteristiche a seconda del tipo di 
+utente che la effettua. L'amministratore può inserire, eliminare o modificare 
+prodotti e 
 utenti.
 
 \newpage
@@ -113,8 +116,8 @@ tramite funtori (oggetti della classe \textbf{Funtore}).
 
 \subsubsection{Prodotto}
 I prodotti sono gestiti da una classe \textbf{Prodotto}. Ogni oggetto 
-\textsl{prodotto} contiene degli attributi che ne esprimono le informazioni da 
-visualizzare e dei metodi di \textsl{get} per ritornarli.
+\textsl{Prodotto} contiene degli attributi che ne esprimono le informazioni da 
+visualizzare e dei metodi di \textsl{set} e \textsl{get}.
 
 \subsubsection{Database}
 I database sono modellati tramite due classi: \textbf{DatabaseProdotti} e 
@@ -127,7 +130,7 @@ inoltre
 un metodo
 per l'autenticazione dell'utente.
 
-\subsubsection{Salvataggio su file}
+\subsection{Salvataggio su file}
 Si è deciso di mantere il salvataggio su file quanto più semplice possibile. Il 
 salvataggio avviene tramite stampa su file .txt riga per riga degli attributi 
 di 
@@ -140,17 +143,7 @@ mano gli oggetti.\\
 Ogni qualvolta il database viene modificato il file di testo corrispondente 
 viene aggiornato.
 
-\subsubsection{Controller}
-Il controller si occupa di collegare la parte logica e la parte grafica. Sono 
-presenti due classi a questo scopo: \textbf{ControllerAdmin} e 
-\textbf{ControllerUtente}.
-Un oggetto controller viene creato ogni qualvolta si effettua l'accesso. 
-\textsl{ControllerAdmin} possiede metodi per inserire, modificare ed eliminare 
-oggetti di
-entrambi i database; \textsl{ControllerUtente} possiede metodi solo per 
-interrogare il database dei prodotti.
-
-\subsubsection{Divisione Grafica-Logica}
+\subsection{Divisione Grafica-Logica}
 Si è cercato di seguire l'architettura \textbf{MVC} (Model-View-Controller). La 
 parte grafica è separata dalla parte logica; entrambe vengono messe in 
 comunicazione
@@ -163,6 +156,16 @@ del pannello in questione. Salvo alcuni casi in cui non è necessario, gli slot
 interagiscono con un oggetto controller. \\
 Lo sviluppo dell'interfaccia grafica è stato effettuato interamente ``a mano'', 
 senza utilizzare tool del Framework.
+
+\subsubsection{Controller}
+Il controller si occupa di collegare la parte logica e la parte grafica. Sono 
+presenti due classi a questo scopo: \textbf{ControllerAdmin} e 
+\textbf{ControllerUtente}.
+Un oggetto controller viene creato ogni qualvolta si effettua l'accesso. 
+\textsl{ControllerAdmin} possiede metodi per inserire, modificare ed eliminare 
+oggetti di
+entrambi i database; \textsl{ControllerUtente} possiede metodi solo per 
+interrogare il database dei prodotti.
 
 
 
