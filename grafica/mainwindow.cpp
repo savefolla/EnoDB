@@ -9,7 +9,6 @@ MainWindow::MainWindow(QWidget *parent): QWidget(parent){
     passErr=new QLabel;
     QLabel* labelUser=new QLabel;
     QLabel* labelPass=new QLabel;
-    QLabel* title=new QLabel;
     QFormLayout* layout=new QFormLayout;
 
     labelUser->setText("Username");
@@ -17,7 +16,6 @@ MainWindow::MainWindow(QWidget *parent): QWidget(parent){
     buttonClose->setText("Esci");
     logAdmin->setText("Login Admin");
     logUser->setText("Login User");
-    title->setText("Login");
     pass->setEchoMode(QLineEdit::Password);
 
     this->setWindowTitle("Login - Database");
